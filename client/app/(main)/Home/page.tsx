@@ -1,15 +1,19 @@
-import React from 'react'
-import FlashSales from "@/components/Home/FlashSales/flash-sales-section";
-import Supplier from "@/components/Home/Supplier/supplier-section";
+import React from 'react';
+import HomeNavBar from '@/components/Home/Hero/HomeNavBar';
+import MainHero from '@/components/Home/Hero/MainHero';
+import AuctionShippingComponent from '@/components/Home/Hero/AuctionComponent';
+import Footer from '@/components/Footer';
 
 
-const page = () => {
+export default function Page() {
   return (
     <div>
-        <Supplier/>
-        <FlashSales/>
+      <HomeNavBar/>
+      <MainHero/>
+      <AuctionShippingComponent/>
+      <Footer/>
     </div>
-  )
+  );
 }
 
-export default page
+
