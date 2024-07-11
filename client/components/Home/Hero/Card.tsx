@@ -1,6 +1,12 @@
 import Image from 'next/image';
 
-const Card = ({ icon, title, description }) => (
+interface CardProps {
+  icon: string;
+  title: string;
+  description: string;
+}
+
+const Card = ({ icon, title, description }: CardProps) => (
     <div className="flex flex-col items-center text-center p-4 bg-white rounded-lg shadow-md text-primary">
         <div className="mb-4">
           <Image src={icon} alt="cardimage" />

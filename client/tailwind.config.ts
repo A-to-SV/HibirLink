@@ -30,6 +30,15 @@ const config = {
         "gradient-conic":
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
       },
+      keyframes: {
+        'custom-bounce': {
+          '0%, 100%': { transform: 'translateY(-3%)' },
+          '50%': { transform: 'translateY(0)' },
+        },
+      },
+      animation: {
+        'custom-bounce': 'custom-bounce 1s infinite',
+      },
     },
   },
   plugins: [require("tailwindcss-animate")],
