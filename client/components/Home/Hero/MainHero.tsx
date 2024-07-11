@@ -22,7 +22,7 @@ const MainHero = () => {
                 </button>
             </div>
         </div>
-        <div className="">
+        <div className="animate-custom-bounce ">
             <Image src={Hero} alt="Heroimage" />
         </div>
       </div>
