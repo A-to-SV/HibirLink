@@ -11,8 +11,11 @@ const config: Config = {
       colors: {
         primary: '#0D55DB',
         'primary-text': '#006CE1',
+        'gradient-start': '#4facfe',
+        'gradient-end': '#00f2fe',
       },
       backgroundImage: {
+        'gradient-to-r': 'linear-gradient(to right, #651FFF 0%, #00BCD4 100%)',
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
         "gradient-conic":
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
