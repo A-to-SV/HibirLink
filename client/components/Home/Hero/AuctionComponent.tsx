@@ -22,13 +22,13 @@ const AuctionShippingComponent = () => {
           />
           <div className="h-3 w-3 rounded-full bg-purple-800 hidden md:inline-block"/>
           <Card
-            icon={Img2}
+            icon={Img3}
             title="Sell"
             description="Confirm the sale and arrange for shipping"
           />
           <div className="h-3 w-3 rounded-full bg-purple-800 hidden md:inline-block"/>
           <Card
-            icon={Img3}
+            icon={Img2}
             title="Ship"
             description="Provide tracking information to the buyer and ensure"
           />

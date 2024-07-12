@@ -45,7 +45,7 @@ const Footer = () => {
               ></path>
             </svg>
             <div className="absolute bottom-0 w-full text-center text-white py-4">
-                &copy;HibrLnk 2024 All Rights Reserved
+                &copy;HibrLink 2024 All Rights Reserved
             </div>
           </div>
         </div>
