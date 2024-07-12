@@ -7,7 +7,7 @@ import { CiSearch } from "react-icons/ci";
 
 const MainHero = () => {
   return (
-    <div className='py-20'>
+    <div className='py-40'>
       <div className='flex flex-col md:flex-row gap-y-10 justify-between items-center w-[70%] mx-auto'>
         <div className="flex flex-col items-start gap-8 ">
             <TypeWriterComponent/>
