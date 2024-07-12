@@ -4,10 +4,10 @@ import { AiFillInstagram } from "react-icons/ai";
 const Footer = () => {
   return (
     <div>
-      <div className="space-y-20">
+      <div className="space-y-10 md:space-y-20">
         <div className="space-y-4">
-          <h1 className="text-primary text-center text-4xl font-bold">Empowering businesses through trade</h1>
-          <p className="text-center text-2xp w-[90%] md:w-[60%] mx-auto">HibrLnk offers one-stop B2B trading solutions for global small and medium-sized 
+          <h1 className="text-primary text-center text-3xl md:text-4xl font-bold mt-10 md:mt-40">Empowering businesses through trade</h1>
+          <p className="text-center text-sm md:text-lg w-[90%] md:w-[60%] mx-auto">HibrLnk offers one-stop B2B trading solutions for global small and medium-sized 
             businesses, empowering them to transform through digital trade, grasp opportunities, and 
             accelerate growth contienentally.
           </p>
@@ -22,7 +22,7 @@ const Footer = () => {
               <AiFillInstagram className="text-primary bg-transparent rounded-full p-2 hover:bg-primary hover:text-white hover:scale-105 hover:-translate-y-1 transition-transform duration-300" size={35}/>
             </div>
         </div>
-        <div className="relative w-full h-80">
+        <div className="relative w-full h-20 md:h-80">
           <svg
               className="absolute bottom-0 w-full"
               xmlns="http://www.w3.org/2000/svg"
