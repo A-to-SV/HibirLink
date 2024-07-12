@@ -53,10 +53,11 @@ const HomeNavBar = () => {
               <IoMdClose size={30} />
             </button>
             <Link href='#' className='mb-4' onClick={toggleMenu}>Home</Link>
-            <Dropdown />
+        
             <Link href='#about' className='mb-4' onClick={toggleMenu}>About</Link>
             <Link href='#faq' className='mb-4' onClick={toggleMenu}>FAQ</Link>
-            <button className='px-4 py-2 bg-primary text-white rounded-2xl text-xm hover:bg-blue-500 mb-4'>GetStarted</button>
+            <Dropdown />
+            <button className='px-4 py-2 mt-4 bg-primary text-white rounded-lg text-xm hover:bg-blue-500 mb-4'>GetStarted</button>
           </div>
         </div>
       )}
