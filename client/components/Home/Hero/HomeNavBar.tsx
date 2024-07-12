@@ -20,10 +20,10 @@ const HomeNavBar = () => {
       </div>
       <div className="flex gap-x-6 items-center">
         <Link href=''>
-          <IoIosHeartEmpty size={20}/>
+          <IoIosHeartEmpty size={20} className='hover:text-primary'/>
         </Link>
         <Link href=''>
-          <IoCartOutline size={20} />
+          <IoCartOutline size={20}className='hover:text-primary'/>
         </Link>
         <button className='px-4 py-2 bg-primary text-white rounded-2xl text-xm hover:bg-blue-500'>GetStarted</button>
       </div>
