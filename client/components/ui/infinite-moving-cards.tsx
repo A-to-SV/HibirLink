@@ -1,7 +1,9 @@
+"use client";
+
 import { cn } from "@/utils/cn";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
-import { FaQuoteRight } from "react-icons/fa6";
+import { FaQuoteRight } from "react-icons/fa";
 
 export const InfiniteMovingCards = ({
     items,
@@ -13,78 +15,92 @@ export const InfiniteMovingCards = ({
     items: {
         quote: string;
         name: string;
-        image: string; 
         occupation: string;
+        image:string;
     }[];
     direction?: "left" | "right";
     speed?: "fast" | "normal" | "slow";
     pauseOnHover?: boolean;
     className?: string;
 }) => {
-    const containerRef = useRef<HTMLDivElement>(null);
-    const scrollerRef = useRef<HTMLUListElement>(null);
+    const containerRef = React.useRef<HTMLDivElement>(null);
+    const scrollerRef = React.useRef<HTMLUListElement>(null);
 
     useEffect(() => {
         addAnimation();
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
-
-    const addAnimation = () => {
+    const [start, setStart] = useState(false);
+    function addAnimation() {
         if (containerRef.current && scrollerRef.current) {
             const scrollerContent = Array.from(scrollerRef.current.children);
 
             scrollerContent.forEach((item) => {
                 const duplicatedItem = item.cloneNode(true);
-                scrollerRef.current && scrollerRef.current.appendChild(duplicatedItem);
+                if (scrollerRef.current) {
+                    scrollerRef.current.appendChild(duplicatedItem);
+                }
             });
 
             getDirection();
             getSpeed();
+            setStart(true);
         }
-    };
-
+    }
     const getDirection = () => {
         if (containerRef.current) {
-            containerRef.current.style.setProperty(
-                "--animation-direction",
-                direction === "left" ? "forwards" : "reverse"
-            );
+            if (direction === "left") {
+                containerRef.current.style.setProperty(
+                    "--animation-direction",
+                    "forwards"
+                );
+            } else {
+                containerRef.current.style.setProperty(
+                    "--animation-direction",
+                    "reverse"
+                );
+            }
         }
     };
-
     const getSpeed = () => {
         if (containerRef.current) {
-            const duration = {
-                fast: "20s",
-                normal: "40s",
-                slow: "80s",
-            }[speed];
-            containerRef.current.style.setProperty("--animation-duration", duration);
+            if (speed === "fast") {
+                containerRef.current.style.setProperty("--animation-duration", "20s");
+            } else if (speed === "normal") {
+                containerRef.current.style.setProperty("--animation-duration", "40s");
+            } else {
+                containerRef.current.style.setProperty("--animation-duration", "80s");
+            }
         }
     };
-
     return (
         <div
             ref={containerRef}
             className={cn(
-                "scroller relative z-20 max-w-7xl overflow-hidden mask-image:linear-gradient(to_right,transparent,white_20%,white_80%,transparent)",
+                "scroller relative z-20  max-w-7xl overflow-hidden  [mask-image:linear-gradient(to_right,transparent,white_20%,white_80%,transparent)]",
                 className
             )}
         >
             <ul
                 ref={scrollerRef}
                 className={cn(
-                    "flex min-w-full gap-4 py-4 w-max flex-nowrap",
-                    "animate-scroll",
-                    pauseOnHover && "hover:animation-play-state:paused"
+                    " flex min-w-full shrink-0 gap-4 py-4 w-max flex-nowrap",
+                    start && "animate-scroll ",
+                    pauseOnHover && "hover:[animation-play-state:paused]"
                 )}
             >
                 {items.map((item, idx) => (
                     <li
-                        key={item.name}
                         className="w-[350px] bg-primary max-w-full relative rounded-2xl border border-b-0 flex-shrink-0 border-slate-700 px-8 py-6 md:w-[450px]"
+                        
+                        key={item.name}
                     >
-                        <div className="flex items-center justify-between mb-4">
+                        <blockquote>
+                            <div
+                                aria-hidden="true"
+                                className="user-select-none -z-1 pointer-events-none absolute -left-0.5 -top-0.5 h-[calc(100%_+_4px)] w-[calc(100%_+_4px)]"
+                            ></div>
+                                                    <div className="flex items-center justify-between mb-4">
                             <div className="flex items-center">
                                 <Image
                                     src={item.image}
@@ -105,6 +121,7 @@ export const InfiniteMovingCards = ({
                             <span className="text-sm leading-[1.6] text-gray-100 font-normal">
                                 {item.quote}
                             </span>
+                        </blockquote>
                         </blockquote>
                     </li>
                 ))}
