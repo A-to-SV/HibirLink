@@ -14,8 +14,9 @@ interface ProductCardProps {
 
   const ProductCard: React.FC<ProductCardProps> = ({ percent, image, imageAlt, name, price, oldPrice, rating, vote }) => {
     return (
+    <div className="hover:scale-105 transition-transform duration-300 ease-in-out">
       <div className="max-w-xs rounded overflow-hidden shadow-lg my-2">
-        <div className="flex bg-gray-200 h-[220px] items-center p-4 relative">
+        <div className="flex group bg-gray-200 h-[220px] items-center p-4 relative">
           <div className="absolute top-0 left-0 bg-blue-500 text-white px-2 py-1 text-xs">
             {percent}
           </div>
@@ -32,6 +33,9 @@ interface ProductCardProps {
               <IoEyeOutline className="text-gray-700" />
             </button>
           </div>
+          <button className="w-full absolute opacity-0 group-hover:opacity-100 transition-opacity duration-300 ease-in-out bg-blue-600 text-white px-4 py-2 rounded-sm bottom-4 left-1/2 transform -translate-x-1/2">
+            ADD TO CART
+          </button>
         </div>
         <div className="py-4">
           <div className="flex font-bold text-xl mb-2">{name}</div>
@@ -45,6 +49,7 @@ interface ProductCardProps {
           </div>
         </div>
       </div>
+    </div>
     );
   };
   
