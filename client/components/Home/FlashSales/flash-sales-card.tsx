@@ -37,7 +37,7 @@ interface ProductCardProps {
             ADD TO CART
           </button>
         </div>
-        <div className="py-4">
+        <div className="py-4 px-3">
           <div className="flex font-bold text-xl mb-2">{name}</div>
           <p className="flex text-gray-700 text-base ">
             <span className="text-blue-500 text-lg">${price}</span>
