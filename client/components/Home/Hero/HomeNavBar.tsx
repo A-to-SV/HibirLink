@@ -24,7 +24,7 @@ const HomeNavBar = () => {
 
   return (
     <div className={`fixed flex justify-between items-center w-full bg-white mt-9 py-4 md:px-20 px-5 z-30 ${scrollActive ? "shadow-sm" : ""}`}>
-      <Link href='/Home' className="flex gap-x-1 items-center">
+      <Link href='/home' className="flex gap-x-1 items-center">
         <Image src={Logo} alt='logoImage' />
         <h1 className='font-bold underline'>HibirLink</h1>
       </Link>
