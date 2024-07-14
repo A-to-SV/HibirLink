@@ -13,19 +13,19 @@ const Dropdown = () => {
         <div className="absolute hidden group-hover:block bg-white text-black mt-1 origin-top-right left-0 w-[160px] rounded-md shadow-lg ring-1 ring-black ring-opacity-5">
           <div className="py-1" role="menu" aria-orientation="vertical" aria-labelledby="options-menu">
             <Link
-              href="/MarketPlace"
+              href="/marketplace"
               className="block px-4 py-2 text-sm hover:bg-gray-100"
             >
               Market place
             </Link>
             <Link
-              href="/Services"
+              href="/services"
               className="block px-4 py-2 text-sm hover:bg-gray-100"
             >
               Service Provided
             </Link>
             <Link
-              href="/Auction"
+              href="/auction"
               className="block px-4 py-2 text-sm hover:bg-gray-100"
             >
               Auction system
