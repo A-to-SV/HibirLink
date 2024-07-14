@@ -1,7 +1,5 @@
 "use client";
 
-
-
 import { FormControl, IconButton, InputAdornment, InputLabel, OutlinedInput } from '@mui/material';
 import TextField from '@mui/material/TextField';
 import { useState } from 'react';
@@ -33,7 +31,7 @@ const SignUp = () => {
                 setSuccessMessage('Registration successful! Redirecting to login...');
                 setTimeout(() => {
                     router.push('/auth/login');
-                }, 3000); 
+                }, 2000); 
             }
         } catch (error) {
             setErrorMessage((error as any).data.message || 'Registration failed. Please try again.');
@@ -80,12 +78,14 @@ const SignUp = () => {
                         className='w-full mb-4'
                         id="name"
                         label="Name"
+                        required
                         variant="outlined"
                         value={name}
                         onChange={(e) => setName(e.target.value)}
                     />
                     <TextField
                         type='email'
+                        required
                         placeholder='johnsondoe@nomail.com'
                         className='w-full mb-4'
                         id="email"
@@ -113,9 +113,10 @@ const SignUp = () => {
                                 </InputAdornment>
                             }
                             label="Password"
+                            required
                         />
                     </FormControl>
-                    {errorMessage && <div className="text-red-500 mb-4">{errorMessage}</div>}
+                    {errorMessage && <div className="text-red-600 text-center mb-4">{errorMessage}</div>}
                     <div className="mb-4">
                         <button
                             type="submit"
@@ -125,7 +126,7 @@ const SignUp = () => {
                             {isLoading ? 'Registering...' : 'GET STARTED'}
                         </button>
                     </div>
-                    {successMessage && <div className="text-green-500 mb-4">{successMessage}</div>}
+                    {successMessage && <div className="text-green-600 text-center mb-4">{successMessage}</div>}
                     <div className='flex justify-center items-center mt-8 mb-4'>
                         <div className='w-full h-px bg-gray-300' />
                         <div className="px-4 text-gray-600  relative">Or</div>

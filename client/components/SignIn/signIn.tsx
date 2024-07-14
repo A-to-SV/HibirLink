@@ -5,7 +5,7 @@ import TextField from '@mui/material/TextField';
 import { useState } from 'react';
 import { MdVisibility, MdVisibilityOff } from "react-icons/md";
 import Image from 'next/image';
-import { useRouter } from 'next/navigation'; // Correct import statement for useRouter
+import { useRouter } from 'next/navigation';
 import { useUserLoginMutation } from '@/redux/api/endpoints';
 
 const SignIn = () => {
@@ -72,6 +72,7 @@ const SignIn = () => {
         <form onSubmit={handleSubmit}>
           <TextField
             type='email'
+            required
             placeholder='johnsondoe@nomail.com'
             className='w-full mb-4'
             id="email"
@@ -99,10 +100,11 @@ const SignIn = () => {
                 </InputAdornment>
               }
               label="Password"
+              required
             />
           </FormControl>
-          {errorMessage && <div className="text-red-500 mb-4">{errorMessage}</div>}
-          {successMessage && <div className="text-green-500 mb-4">{successMessage}</div>}
+          {errorMessage && <div className="text-red-600 mb-4 text-center">{errorMessage}</div>}
+          {successMessage && <div className="text-green-600 mb-4 text-center">{successMessage}</div>}
           <div className="mb-4">
             <button
               type="submit"
