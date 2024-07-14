@@ -14,8 +14,8 @@ interface ProductCardProps {
 
   const ProductCard: React.FC<ProductCardProps> = ({ percent, image, imageAlt, name, price, oldPrice, rating, vote }) => {
     return (
-    <div className="hover:scale-105 transition-transform duration-300 ease-in-out">
-      <div className="max-w-xs rounded overflow-hidden shadow-lg my-2">
+    <div className="hover:scale-105 transition-transform duration-300 ease-in-out w-72">
+      <div className="rounded overflow-hidden shadow-lg my-2">
         <div className="flex group bg-gray-200 h-[220px] items-center p-4 relative">
           <div className="absolute top-0 left-0 bg-blue-500 text-white px-2 py-1 text-xs">
             {percent}
