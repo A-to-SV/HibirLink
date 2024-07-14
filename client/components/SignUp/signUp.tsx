@@ -27,7 +27,7 @@ const SignUp = () => {
         setSuccessMessage('');
         try {
             const result = await userRegistration({ name, email, password }).unwrap();
-            if (result.success) {
+            if (result) {
                 setSuccessMessage('Registration successful! Redirecting to login...');
                 setTimeout(() => {
                     router.push('/auth/login');
@@ -117,6 +117,8 @@ const SignUp = () => {
                         />
                     </FormControl>
                     {errorMessage && <div className="text-red-600 text-center mb-4">{errorMessage}</div>}
+                    
+                    {successMessage && <div className="text-green-600 text-center mb-4">{successMessage}</div>}
                     <div className="mb-4">
                         <button
                             type="submit"
@@ -126,7 +128,6 @@ const SignUp = () => {
                             {isLoading ? 'Registering...' : 'GET STARTED'}
                         </button>
                     </div>
-                    {successMessage && <div className="text-green-600 text-center mb-4">{successMessage}</div>}
                     <div className='flex justify-center items-center mt-8 mb-4'>
                         <div className='w-full h-px bg-gray-300' />
                         <div className="px-4 text-gray-600  relative">Or</div>
