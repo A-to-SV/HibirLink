@@ -67,3 +67,8 @@
     @apply bg-background text-foreground;
   }
 }
+
+.sign-up-container {
+  background-image: url('/assets/sign_in_page.png');
+  background-size: 100%;
+}
