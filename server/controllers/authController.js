@@ -4,9 +4,15 @@ import { pool } from '../config/db.js';
 
 const register = async (req, res) => {
   const { name, email, password } = req.body;
+  
   try {
+    const existingUser = await pool.query('SELECT * FROM users WHERE email = $1', [email]);
+    if (existingUser.rows.length > 0) {
+      return res.status(400).json({ message: 'User with this email already exists' });
+    }
+
     const hashedPassword = await bcrypt.hash(password, 10);
-    
+
     const result = await pool.query(
       'INSERT INTO users (name, email, password_hash) VALUES ($1, $2, $3) RETURNING *',
       [name, email, hashedPassword]
@@ -18,6 +24,7 @@ const register = async (req, res) => {
     res.status(500).json({ message: 'Error registering user' });
   }
 };
+
 
 const login = async (req, res) => {
   const { email, password } = req.body;
