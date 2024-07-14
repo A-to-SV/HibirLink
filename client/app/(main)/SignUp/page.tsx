@@ -1,8 +1,8 @@
+import SignUp from "@/components/SignUp/signUp";
+
 const Page = () => {
     return (
-        <div>
-            Register
-        </div>
+        <SignUp />
     );
 }
 

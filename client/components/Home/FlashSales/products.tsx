@@ -7,7 +7,7 @@ export const ProductsList = [
         "price": "190",
         "oldPrice": "200",
         "rating": "★★★★★",
-        "vote": "88"
+        "vote": "88",
     },
     {
         "percent": "-30%",
@@ -17,7 +17,8 @@ export const ProductsList = [
         "price": "120",
         "oldPrice": "160",
         "rating": "★★★★★",
-        "vote": "88"
+        "vote": "88",
+        "type": "Electronics"
     }, 
     {
         "percent": "-35%",
@@ -27,7 +28,8 @@ export const ProductsList = [
         "price": "960",
         "oldPrice": "1160",
         "rating": "★★★★☆",
-        "vote": "75"
+        "vote": "75",
+        "type": "Electronics"
     },
     {
         "percent": "-40%",
@@ -37,7 +39,8 @@ export const ProductsList = [
         "price": "120",
         "oldPrice": "200",
         "rating": "★★★★★",
-        "vote": "88"
+        "vote": "88",
+        "type": "Electronics"
     },
     {
         "percent": "-30%",
@@ -47,7 +50,8 @@ export const ProductsList = [
         "price": "120",
         "oldPrice": "160",
         "rating": "★★★★★",
-        "vote": "88"
+        "vote": "88",
+        "type": "Electronics"
     }, 
     {
         "percent": "-40%",
@@ -57,6 +61,29 @@ export const ProductsList = [
         "price": "190",
         "oldPrice": "200",
         "rating": "★★★★★",
-        "vote": "88"
+        "vote": "88",
+        "type": "Furniture"
+    },
+    {
+        "percent": "-40%",
+        "image": "/assets/product4.png",
+        "imageAlt": "PC Monitor Image",
+        "name": "IPS LCD Gaming Monitor",
+        "price": "120",
+        "oldPrice": "200",
+        "rating": "★★★★★",
+        "vote": "88",
+        "type": "Electronics"
+    },
+    {
+        "percent": "-30%",
+        "image": "/assets/product2.png",
+        "imageAlt": "Phones Image",
+        "name": "HAVIT HV-G92 Gamepad",
+        "price": "120",
+        "oldPrice": "160",
+        "rating": "★★★★★",
+        "vote": "88",
+        "type": "Electronics"
     },
   ]
