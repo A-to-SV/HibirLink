@@ -5,11 +5,11 @@ import { protect } from '../middleware/authMiddleware.js';
 const router = Router();
 
 router.route('/')
-    .post(protect, create);
+    .post(create);
 
 router.route('/:id')
     .get(getProduct)
-    .put(protect, updateProduct)
-    .delete(protect, deleteProduct);
+    .patch(updateProduct)
+    .delete(deleteProduct);
 
 export default router;
