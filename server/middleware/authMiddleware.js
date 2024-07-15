@@ -1,14 +1,28 @@
 import jwt from 'jsonwebtoken';
+import { query } from '../config/db.js';
 
-const authenticateToken = (req, res, next) => {
-  const token = req.headers['authorization'];
-  if (!token) return res.sendStatus(401);
-
-  jwt.verify(token, process.env.JWT_SECRET, (err, user) => {
-    if (err) return res.sendStatus(403);
-    req.user = user;
-    next();
-  });
+const protect = async (req, res, next) => {
+    if (req.headers.authorization && req.headers.authorization.startsWith('Bearer ')) {
+        try {
+            const token = req.headers.authorization.split(' ')[1];
+            const decoded = jwt.verify(token, process.env.JWT_SECRET);
+        
+            const result = await query('SELECT * FROM Users WHERE id = $1', [decoded.id]);
+        
+            if (!result.rows.length) {
+                return res.status(401).json({ message: 'Not authorized, user not found' });
+            }
+        
+            req.user = result.rows[0];
+            next();
+        } catch (error) {
+            console.error("Error in protect middleware:", error);
+            return res.status(401).json({ message: 'Not authorized, token failed' });
+        }
+    } else {
+        return res.status(401).json({ message: 'Not authorized, no token' });
+    }
 };
 
-export { authenticateToken };
+
+export { protect };

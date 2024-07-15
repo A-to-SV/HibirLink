@@ -4,8 +4,8 @@
     "nodemon": "^3.1.4"
   },
   "scripts": {
-    "start": "node index.js",
-    "dev": "nodemon index.js",
+    "start": "node server.js",
+    "dev": "nodemon server.js",
     "build": "tsc -p ."
   },
   "dependencies": {
@@ -18,9 +18,9 @@
   },
   "name": "server",
   "version": "1.0.0",
-  "main": "index.js",
-  "author": "",
+  "main": "server.js",
+  "author": "Your Name",
   "license": "ISC",
-  "description": "",
+  "description": "backend server for the app",
   "type": "module"
 }
