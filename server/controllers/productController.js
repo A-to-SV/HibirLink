@@ -1,4 +1,4 @@
-import { createProduct, getProductById, updateProductById, deleteProductById } from '../models/Product.js';
+import { createProduct, getProductById, getProducts, updateProductById, deleteProductById } from '../models/Product.js';
 
 const create = async (req, res) => {
     try {
@@ -18,6 +18,24 @@ const getProduct = async (req, res) => {
         }
         res.status(200).json(product);
     } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+};
+
+const getFilteredProducts = async (req, res) => {
+    try {
+        // Get categories from query parameters
+        const { categories } = req.query;
+
+        // Convert categories to an array if comma-separated string
+        const filter = {
+            categories: categories ? categories.split(',') : []
+        };
+
+        const products = await getProducts(filter);
+        res.status(200).json(products);
+    } catch (error) {
+        console.error(error);
         res.status(500).json({ message: error.message });
     }
 };
@@ -46,4 +64,4 @@ const deleteProduct = async (req, res) => {
     }
 };
 
-export { create, getProduct, updateProduct, deleteProduct };
+export { create, getProduct, getFilteredProducts, updateProduct, deleteProduct };

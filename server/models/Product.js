@@ -17,6 +17,27 @@ const getProductById = async (id) => {
     return result.rows[0];
 };
 
+const getProducts = async (filter) => {
+    const { categories } = filter;
+    let queryText = 'SELECT * FROM Products';
+    let queryParams = [];
+
+    // Handle categories filter if provided
+    if (categories && categories.length > 0) {
+        // Generate placeholders like $1, $2, etc., for each category
+        const placeholders = categories.map((_, index) => `$${index + 1}`).join(', ');
+        queryText += ` WHERE category IN (${placeholders})`;
+        queryParams = [...categories];
+    }
+
+    try {
+        const result = await query(queryText, queryParams);
+        return result.rows;
+    } catch (error) {
+        throw error;
+    }
+};
+
 const updateProductById = async (id, productData) => {
     const { category, name, price, description, image, address, contact_number } = productData;
     const result = await query(
@@ -34,4 +55,4 @@ const deleteProductById = async (id) => {
     return result.rows[0];
 };
 
-export { createProduct, getProductById, updateProductById, deleteProductById };
+export { createProduct, getProductById, getProducts, updateProductById, deleteProductById };
