@@ -1,5 +1,4 @@
 'use client';
-import Link from 'next/link';
 import { useState } from 'react';
 
 const ProductPage = () => {
@@ -51,7 +50,7 @@ const ProductPage = () => {
 
   return (
     <div className="p-4 flex items-center justify-center min-h-screen">
-      <form onSubmit={handleSubmit} className="bg-white p-6 border-2 border-blue-300 rounded-lg shadow-md w-full max-w-5xl mt-10">
+      <form onSubmit={handleSubmit} className="bg-white p-6 shadow-lg rounded-lg w-full max-w-5xl mt-10">
         <div className='text-blue-500 text-xl mb-8 border-b-2'>
             Product Information
         </div>
@@ -86,11 +85,11 @@ const ProductPage = () => {
             >
             </textarea>
             <input 
-                type="file" 
-                name="productimage" 
-                className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-4 max-w-80 '
-                accept="image/*"
+                type="text" 
+                name="imagelink" 
+                className='border border-black py-2 px-4 rounded mt-4 w-full '
                 onChange={handleChange}
+                placeholder='Image Link here'
             />
           </div>
 
