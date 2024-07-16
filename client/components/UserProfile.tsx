@@ -4,7 +4,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useState } from 'react';
 
-const ProfilePage = () => {
+const UserProfile = () => {
   const [formData, setFormData] = useState({
     fullname: '',
     gender: '',
@@ -25,22 +25,6 @@ const ProfilePage = () => {
 
   const handleSubmit = async (e: { preventDefault: () => void; }) => {
     e.preventDefault();
-    try {
-      const response = await fetch('/api/submitProfile', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
-      });
-      if (response.ok) {
-        console.log('Form submitted successfully');
-      } else {
-        console.error('Form submission failed');
-      }
-    } catch (error) {
-      console.error('Error submitting form:', error);
-    }
   };
 
   return (
@@ -56,7 +40,7 @@ const ProfilePage = () => {
 
         <div className="flex flex-col sm:flex-row sm:justify-between items-center mb-6">
           <div className="flex items-center mb-4 sm:mb-0">
-            <img className="w-14 ml-5" src="https://st3.depositphotos.com/15648834/17930/v/450/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg" alt="Profile" />
+            <Image className="w-14 ml-5" src="https://st3.depositphotos.com/15648834/17930/v/450/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg" alt="Profile" />
             <div className="ml-2">
               <h2 className="font-semibold text-base">User Name</h2>
               <p className="text-gray-500 text-sm">dummy@gmail.com</p>
@@ -178,4 +162,4 @@ const ProfilePage = () => {
   );
 };
 
-export default ProfilePage;
+export default UserProfile;

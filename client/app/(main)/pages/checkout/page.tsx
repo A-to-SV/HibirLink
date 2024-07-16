@@ -10,7 +10,6 @@ import { IoArrowBackCircle } from "react-icons/io5";
 import { useRouter } from 'next/navigation';
 
 
-
 const Checkout = () => {
     const router = useRouter();
     return (
