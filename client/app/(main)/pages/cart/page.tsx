@@ -1,6 +1,9 @@
 import React from 'react';
 import Cart from '@/components/CartComp/Cart';
 import { IoArrowBackCircle } from "react-icons/io5";
+import Footer from '@/components/MarketPlace/footer'
+
+
 
 const page = () => {
   return (
@@ -9,6 +12,7 @@ const page = () => {
             <IoArrowBackCircle size={30} className='text-blue-700' />
         </div>
         <Cart/>
+        <Footer/>
     </div>
   )
 }
