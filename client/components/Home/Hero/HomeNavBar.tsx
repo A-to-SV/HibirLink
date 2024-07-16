@@ -36,7 +36,6 @@ const HomeNavBar = () => {
         {!isHomePage || <Dropdown />}
         {isHomePage && (
           <>
-            <Link href='#'>Home</Link>
             <Link href='#about'>About</Link>
             <Link href='#faq'>FAQ</Link>
           </>
@@ -63,7 +62,6 @@ const HomeNavBar = () => {
             {isHomePage || <Dropdown />}
             {!isHomePage && (
               <>
-                <Link href='#' className='mb-4' onClick={toggleMenu}>Home</Link>
                 <Link href='#about' className='mb-4' onClick={toggleMenu}>About</Link>
                 <Link href='#faq' className='mb-4' onClick={toggleMenu}>FAQ</Link>
               </>
