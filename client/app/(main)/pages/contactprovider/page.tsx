@@ -82,12 +82,12 @@ const ContactPage = () => {
           </div>
           {/* this is the right side div */}
           <div className="flex-1 flex flex-col justify-center items-center">
-            <p>Pick Time and Date</p>
+            <p className='text-gray-600'>Pick Time and Date</p>
             <Calendar
               mode="single"
               selected={date}
               onSelect={setDate}
-              className="text-blue-500 border-2 border-gray-300 rounded-lg p-4 mt-4"
+              className="text-blue-500 border-2 border-gray-300 rounded-lg p-4 mt-2"
             />
             <input
               type="time"
