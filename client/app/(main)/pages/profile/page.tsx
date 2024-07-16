@@ -1,4 +1,3 @@
-
 'use client';
 import Link from 'next/link';
 import { useState } from 'react';
@@ -41,6 +40,7 @@ const ProfilePage = () => {
       console.error('Error submitting form:', error);
     }
   };
+
 
   return (
     <div className="p-4 flex items-center justify-center min-h-screen bg-gray-100">
