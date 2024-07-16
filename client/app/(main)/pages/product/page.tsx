@@ -1,110 +1,116 @@
 'use client';
 import { useState } from 'react';
+import { usePostProductMutation } from '@/redux/api/endpoints';
+import { useRouter } from 'next/navigation';
 
 const ProductPage = () => {
+  const router = useRouter();
   const [formData, setFormData] = useState({
-    productName: '',
+    name: '',
     price: '',
     description: '',
-    productimage: null,
-    contact: '',
+    image: '',
+    contact_number: '',
     address: '',
     category: '',
   });
 
+  const [postProduct, { isLoading, isSuccess, isError }] = usePostProductMutation();
+  const [successMessage, setSuccessMessage] = useState('');
+
   const handleChange = (e) => {
-    const { name, value, files } = e.target;
-    if (name === 'productimage') {
-      setFormData((prevState) => ({
-        ...prevState,
-        [name]: files[0],
-      }));
-    } else {
-      setFormData((prevState) => ({
-        ...prevState,
-        [name]: value,
-      }));
-    }
+    const { name, value } = e.target;
+    setFormData((prevState) => ({
+      ...prevState,
+      [name]: value,
+    }));
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const formDataToSend = new FormData();
-    for (const key in formData) {
-      formDataToSend.append(key, formData[key]);
-    }
     try {
-      const response = await fetch('/api/submitProfile', {
-        method: 'POST',
-        body: formDataToSend,
+      await postProduct(formData).unwrap();
+      setSuccessMessage('Product successfully posted!');
+      setFormData({
+        name: '',
+        price: '',
+        description: '',
+        image: '',
+        contact_number: '',
+        address: '',
+        category: '',
       });
-      if (response.ok) {
-        console.log('Form submitted successfully');
-      } else {
-        console.error('Form submission failed');
-      }
     } catch (error) {
-      console.error('Error submitting form:', error);
+      console.error('Failed to post product:', error);
+      setSuccessMessage('Failed to post product. Please try again.');
     }
   };
 
   return (
     <div className="p-4 flex items-center justify-center min-h-screen">
       <form onSubmit={handleSubmit} className="bg-white p-6 shadow-lg rounded-lg w-full max-w-5xl mt-10">
-        <div className='text-blue-500 text-xl mb-8 border-b-2'>
-            Product Information
-        </div>
+        <div className="text-blue-500 text-xl mb-8 border-b-2">Product Information</div>
+
         <div className="flex flex-col md:flex-row md:space-x-6">
           <div className="flex-1 mb-6 md:mb-0">
-            <label htmlFor="productName" className="block font-medium text-gray-700 mb-3">Product Name</label>
+            <label htmlFor="name" className="block font-medium text-gray-700 mb-3">Product Name</label>
             <input
               type="text"
-              name="productName"
+              name="name"
               placeholder="Product Name"
-              value={formData.productName}
+              value={formData.name}
+              required
               onChange={handleChange}
               className="mt-1 bg-zinc-100 block w-full rounded-md shadow-sm py-2 px-3 sm:text-sm h-12"
             />
 
-            <label htmlFor="price" className="block  font-medium text-gray-700 mt-4 mb-3">Price in Birr</label>
+            <label htmlFor="price" className="block font-medium text-gray-700 mt-4 mb-3">Price in Birr</label>
             <input
               type="text"
+              required
               name="price"
               placeholder="Price"
               value={formData.price}
               onChange={handleChange}
-              className="mt-1 bg-zinc-100 block w-full  rounded-md shadow-sm py-2 px-3 sm:text-sm h-12"
+              className="mt-1 bg-zinc-100 block w-full rounded-md shadow-sm py-2 px-3 sm:text-sm h-12"
             />
-            
-            <label htmlFor="description" className="block mb-3  font-medium text-gray-700 mt-4">Description</label>
+
+            <label htmlFor="description" className="block mb-3 font-medium text-gray-700 mt-4">Description</label>
             <textarea
               name="description"
+              required
               value={formData.description}
               onChange={handleChange}
-              className="mt-1  block w-full bg-zinc-100 rounded-md h-48 shadow-sm py-2 px-3 sm:text-sm"
-            >
-            </textarea>
-            <input 
-                type="text" 
-                name="imagelink" 
-                className='border border-black py-2 px-4 rounded mt-4 w-full '
-                onChange={handleChange}
-                placeholder='Image Link here'
+              className="mt-1 block w-full bg-zinc-100 rounded-md h-48 shadow-sm py-2 px-3 sm:text-sm"
+            />
+
+            <label htmlFor="image" className="block font-medium text-gray-700 mt-4 mb-3">Image Link</label>
+            <input
+              type="text"
+              required
+              name="image"
+              placeholder="Image Link"
+              value={formData.image}
+              onChange={handleChange}
+              className="mt-1 bg-zinc-100 block w-full rounded-md shadow-sm py-2 px-3 sm:text-sm h-12"
             />
           </div>
 
           <div className="flex-1">
-            <label htmlFor="contact" className="block mb-3 font-medium text-gray-700">Contact Number</label>
+            <label htmlFor="contact_number" className="block mb-3 font-medium text-gray-700">Contact Number</label>
             <input
+              required
               type="text"
-              name="contact"
+              name="contact_number"
               placeholder="Contact Number"
-              value={formData.contact}
+              value={formData.contact_number}
               onChange={handleChange}
-              className="mt-1 bg-zinc-100 block w-full  rounded-md shadow-sm py-2 px-3 sm:text-sm h-12"
+              className="mt-1 bg-zinc-100 block w-full rounded-md shadow-sm py-2 px-3 sm:text-sm h-12"
             />
+
             <label htmlFor="address" className="block mb-3 font-medium text-gray-700 mt-4">Address</label>
             <input
+              required  
               type="text"
               name="address"
               placeholder="Address"
@@ -112,32 +118,37 @@ const ProductPage = () => {
               onChange={handleChange}
               className="mt-1 bg-zinc-100 block w-full rounded-md shadow-sm py-2 px-3 sm:text-sm h-12"
             />
+
             <label htmlFor="category" className="block mb-3 font-medium text-gray-700 mt-4">Category</label>
             <select
-                name="category"
-                value={formData.category}
-                onChange={handleChange}
-                className="mt-1 bg-zinc-100 block w-full rounded-md shadow-sm py-2 px-3 text-gray-600 h-12 sm:text-sm"
-                 >
-                <option value="">Select Category</option>
-                <option value="Electronics">Electronics</option>
-                <option value="Clothes">Clothes</option>
-                <option value="Furniture">Furniture</option>
-                <option value="Books">Books</option>
-                <option value="Others">Others</option>
+              required
+              name="category"
+              value={formData.category}
+              onChange={handleChange}
+              className="mt-1 bg-zinc-100 block w-full rounded-md shadow-sm py-2 px-3 text-gray-600 h-12 sm:text-sm"
+            >
+              <option value="">Select Category</option>
+              <option value="electronics">Electronics</option>
+              <option value="clothes">Clothes</option>
+              <option value="furniture">Furniture</option>
+              <option value="books">Books</option>
+              <option value="others">Others</option>
             </select>
-            <div className='flex justify-center md:justify-end lg:justify-end'>
-                <button type="submit" className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded w-20 m-7">
-                   Save
-                </button>
+
+            <div className="flex justify-start gap-x-3 py-6">
+              <button type="submit" className="bg-blue-500 hover:bg-blue-700 text-white font-bold  rounded w-20 " disabled={isLoading}>
+                {isLoading ? 'Saving...' : 'Save'}
+              </button>
+              <button onClick={() => router.push("/marketplace")} className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded w-20'>Back</button>
             </div>
-            
           </div>
         </div>
+
+        {isSuccess && <p className="text-green-500 mt-4 text-center">{successMessage}</p>}
+        {isError && <p className="text-red-500 mt-4 text-center">Failed to post product. Please try again.</p>}
       </form>
     </div>
   );
 };
 
 export default ProductPage;
-

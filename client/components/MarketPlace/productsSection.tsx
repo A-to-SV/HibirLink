@@ -1,22 +1,21 @@
-"use client";
+'use client';
 import React, { useState, useEffect } from 'react';
 import ProductCard from '../Home/FlashSales/flash-sales-card';
-import { ProductsList } from '../Home/FlashSales/products';
-import { FaMobileAlt, FaHeartbeat, FaIndustry, FaTshirt, FaShoppingCart, FaWrench, FaCouch, FaSpa } from 'react-icons/fa'; // Example icons
+import { useGetAllProductsQuery } from '@/redux/api/endpoints';
+import { FaMobileAlt, FaIndustry, FaTshirt, FaShoppingCart, FaWrench, FaCouch, FaSpa } from 'react-icons/fa'; 
 
 const productTypes: { type: string; icon: React.ElementType }[] = [
-    { type: "Electronics", icon: FaMobileAlt },
+    { type: "electronics", icon: FaMobileAlt },
     { type: "Health and Beauty", icon: FaSpa },
     { type: "Industrial", icon: FaIndustry },
-    { type: "Fashion", icon: FaTshirt },
-    { type: "Groceries and Raw material", icon: FaShoppingCart },
-    { type: "Maintenance and Operation", icon: FaWrench },
-    { type: "Furniture", icon: FaCouch },
+    { type: "clothes", icon: FaTshirt },
+    { type: "book", icon: FaWrench },
+    { type: "furniture", icon: FaCouch },
 ];
 
 const OurProductsSection: React.FC = () => {
     const [selectedTypes, setSelectedTypes] = useState<string[]>([]);
-    const [filteredProducts, setFilteredProducts] = useState<any[]>(ProductsList as any[]);
+    const { data: products, isLoading, isError } = useGetAllProductsQuery();
 
     const toggleType = (type: string) => {
         setSelectedTypes(prevSelectedTypes =>
@@ -26,17 +25,12 @@ const OurProductsSection: React.FC = () => {
         );
     };
 
-    useEffect(() => {
-        if (selectedTypes.length === 0) {
-            setFilteredProducts(ProductsList);
-        } else {
-            setFilteredProducts(
-                (ProductsList).filter(product =>
-                    selectedTypes.includes(product?.type ?? '')
-                )
-            );
-        }
-    }, [selectedTypes]);
+    const filteredProducts = selectedTypes.length === 0
+        ? products
+        : products?.filter((product: { category: string; }) => selectedTypes.includes(product.category));
+
+    if (isLoading) return <div>Loading...</div>;
+    if (isError) return <div>Failed to load products. Please try again later.</div>;
 
     return (
         <div className="flex justify-center">
@@ -56,17 +50,17 @@ const OurProductsSection: React.FC = () => {
                 </div>
                 <div className="w-full flex justify-center mt-8">
                     <div style={{ maxWidth: '1400px' }} className="flex flex-wrap p-4 pl-20 lg:pl-10 gap-12 justify-start">
-                        {filteredProducts.map((product, index) => (
+                        {filteredProducts?.map((product: { image: string; name: string; price: string ; }, index: React.Key | null | undefined) => (
                             <ProductCard
                                 key={index}
-                                percent={product.percent}
+                                percent="-40%"
                                 image={product.image}
-                                imageAlt={product.imageAlt}
+                                imageAlt="productimage"
                                 name={product.name}
                                 price={product.price}
-                                oldPrice={product.oldPrice}
-                                rating={product.rating}
-                                vote={product.vote}
+                                oldPrice={product.price + 10}
+                                rating={4}
+                                vote={88}
                             />
                         ))}
                     </div>

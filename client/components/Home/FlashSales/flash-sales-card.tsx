@@ -21,7 +21,7 @@ interface ProductCardProps {
             {percent}
           </div>
           <img
-            className="mx-auto"
+            className="mx-auto overflow-hidden object-cover h-50 w-40"
             src={image}
             alt={imageAlt}
           />
