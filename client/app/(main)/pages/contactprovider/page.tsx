@@ -2,7 +2,7 @@
 import Link from 'next/link';
 import { useState } from 'react';
 
-const ProductPage = () => {
+const ProfilePage = () => {
   const [formData, setFormData] = useState({
     productName: '',
     price: '',
@@ -113,20 +113,7 @@ const ProductPage = () => {
               onChange={handleChange}
               className="mt-1 bg-zinc-100 block w-full rounded-md shadow-sm py-2 px-3 sm:text-sm h-12"
             />
-            <label htmlFor="category" className="block mb-3 font-medium text-gray-700 mt-4">Category</label>
-            <select
-                name="category"
-                value={formData.category}
-                onChange={handleChange}
-                className="mt-1 bg-zinc-100 block w-full rounded-md shadow-sm py-2 px-3 text-gray-600 h-12 sm:text-sm"
-                 >
-                <option value="">Select Category</option>
-                <option value="Electronics">Electronics</option>
-                <option value="Clothes">Clothes</option>
-                <option value="Furniture">Furniture</option>
-                <option value="Books">Books</option>
-                <option value="Others">Others</option>
-            </select>
+        
             <div className='flex justify-center md:justify-end lg:justify-end'>
                 <button type="submit" className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded w-20 m-7">
                    Save
@@ -140,5 +127,5 @@ const ProductPage = () => {
   );
 };
 
-export default ProductPage;
+export default ProfilePage;
 
