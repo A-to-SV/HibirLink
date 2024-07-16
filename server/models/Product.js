@@ -38,6 +38,18 @@ const getProducts = async (filter) => {
     }
 };
 
+const searchProductsByName = async (productName) => {
+    let queryText = 'SELECT * FROM Products WHERE name LIKE $1';
+    let queryParams = [`%${productName}%`]; // Use % for partial matching
+
+    try {
+        const result = await query(queryText, queryParams);
+        return result.rows;
+    } catch (error) {
+        throw error;
+    }
+};
+
 const updateProductById = async (id, productData) => {
     const { category, name, price, description, image, address, contact_number } = productData;
     const result = await query(
@@ -55,4 +67,4 @@ const deleteProductById = async (id) => {
     return result.rows[0];
 };
 
-export { createProduct, getProductById, getProducts, updateProductById, deleteProductById };
+export { createProduct, getProductById, getProducts, updateProductById, deleteProductById, searchProductsByName };

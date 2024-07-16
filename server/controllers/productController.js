@@ -1,4 +1,4 @@
-import { createProduct, getProductById, getProducts, updateProductById, deleteProductById } from '../models/Product.js';
+import { createProduct, getProductById, getProducts, updateProductById, deleteProductById, searchProductsByName} from '../models/Product.js';
 
 const create = async (req, res) => {
     try {
@@ -40,6 +40,16 @@ const getFilteredProducts = async (req, res) => {
     }
 };
 
+const getProductByName = async (req, res) => {
+    try {
+        const products = await searchProductsByName(req.query.name);
+        res.status(200).json(products);
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ message: error.message });
+    }
+};
+
 const updateProduct = async (req, res) => {
     try {
         const product = await updateProductById(req.params.id, req.body);
@@ -64,4 +74,5 @@ const deleteProduct = async (req, res) => {
     }
 };
 
-export { create, getProduct, getFilteredProducts, updateProduct, deleteProduct };
+
+export { create, getProduct, getFilteredProducts, updateProduct, deleteProduct, getProductByName };

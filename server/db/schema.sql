@@ -37,3 +37,11 @@ CREATE TABLE Products (
     contact_number VARCHAR(20)
 );
 
+CREATE TABLE CartItems (
+    id SERIAL PRIMARY KEY,
+    user_id INT NOT NULL,
+    product_id INT NOT NULL,
+    quantity INT NOT NULL,
+    FOREIGN KEY (user_id) REFERENCES Users(id),
+    FOREIGN KEY (product_id) REFERENCES Products(id)
+);
