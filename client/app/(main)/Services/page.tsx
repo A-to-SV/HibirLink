@@ -1,15 +1,20 @@
+'use client';
 import BusinessBanner from '@/components/Services/doYouOfferServices'
-import ServiceCard from '@/components/Services/serviceCard'
 import Footer from '@/components/MarketPlace/footer'
 import React from 'react';
 import CommonNavBar from '@/components/CommonNavBar';
+import ExploreServiceProviders from '@/components/Services/exploreServices';
+import ServicesBottomSection from '@/components/Services/servicesBottomSection';
+import ServicesSlider from '@/components/Services/servicesSlider';
 
 const page = () => {
   return (
     <div>
       <CommonNavBar />
+      <ServicesSlider />
+      <ExploreServiceProviders />
       <BusinessBanner />
-      <ServiceCard />
+      <ServicesBottomSection />
       <Footer />
     </div>
   )

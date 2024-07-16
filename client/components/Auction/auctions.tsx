@@ -1,128 +1,90 @@
 export const AuctionsList = [
     {
         starts: "Starts Later",
-        image: "/assets/product1.png",
-        imageAlt: "chair Image",
-        name: "S-Series Comfort Chair",
-        price: 190,
+        image: "/assets/house1.jpg",
+        imageAlt: "Modern House Image",
+        name: "4-Bedroom Modern House",
+        price: 3000000,
+        type: "House",
     },
     {
         starts: "Live",
-        image: "/assets/product2.png",
-        imageAlt: "Phones Image",
-        name: "HAVIT HV-G92 Gamepad",
-        price: 120,
-
-    }, 
+        image: "/assets/electronics1.jpg",
+        imageAlt: "Smart TV Image",
+        name: "55-inch 4K Smart TV",
+        price: 15000,
+        type: "Electronics",
+    },
     {
         starts: "Live",
-        image: "/assets/product3.png",
-        imageAlt: "KeyBoard Image",
-        name: "AK-900 Wired Keyboard",
-        price: 960,
-
+        image: "/assets/arts1.jpg",
+        imageAlt: "Painting Image",
+        name: "Abstract Painting",
+        price: 8000,
+        type: "Arts",
     },
     {
         starts: "Starts Later",
-        image: "/assets/product4.png",
-        imageAlt: "PC Monitor Image",
-        name: "IPS LCD Gaming Monitor",
-        price: 120,
-
-    },
-    {
-        starts: "Live",
-        image: "/assets/product2.png",
-        imageAlt: "Phones Image",
-        name: "HAVIT HV-G92 Gamepad",
-        price: 120,
-
-    }, 
-    {
-        starts: "Starts Later",
-        image: "/assets/product1.png",
-        imageAlt: "chair Image",
-        name: "S-Series Comfort Chair",
-        price: 190,
-
+        image: "/assets/industrial1.png",
+        imageAlt: "Tractor Image",
+        name: "Agricultural Tractor",
+        price: 500000,
+        type: "Industrial",
     },
     {
         starts: "Starts Later",
-        image: "/assets/product4.png",
-        imageAlt: "PC Monitor Image",
-        name: "IPS LCD Gaming Monitor",
-        price: 120,
-
-    },
-    {
-        starts: "Live",
-        image: "/assets/product2.png",
-        imageAlt: "Phones Image",
-        name: "HAVIT HV-G92 Gamepad",
-        price: 120,
-
-    },{
-        starts: "Starts Later",
-        image: "/assets/product1.png",
-        imageAlt: "chair Image",
-        name: "S-Series Comfort Chair",
-        price: 190,
-
-    },
-    {
-        starts: "Live",
-        image: "/assets/product2.png",
-        imageAlt: "Phones Image",
-        name: "HAVIT HV-G92 Gamepad",
-        price: 120,
-
-    }, 
-    {
-        starts: "Live",
-        image: "/assets/product3.png",
-        imageAlt: "KeyBoard Image",
-        name: "AK-900 Wired Keyboard",
-        price: 960,
-
+        image: "/assets/fashion1.webp",
+        imageAlt: "Designer Dress Image",
+        name: "Designer Evening Dress",
+        price: 2500,
+        type: "Fashion",
     },
     {
         starts: "Starts Later",
-        image: "/assets/product4.png",
-        imageAlt: "PC Monitor Image",
-        name: "IPS LCD Gaming Monitor",
-        price: 120,
-
+        image: "/assets/furniture1.jpg",
+        imageAlt: "Sofa Set Image",
+        name: "Luxury Sofa Set",
+        price: 20000,
+        type: "Furniture",
     },
     {
         starts: "Live",
-        image: "/assets/product2.png",
-        imageAlt: "Phones Image",
-        name: "HAVIT HV-G92 Gamepad",
-        price: 120,
-
-    }, 
-    {
-        starts: "Starts Later",
-        image: "/assets/product1.png",
-        imageAlt: "chair Image",
-        name: "S-Series Comfort Chair",
-        price: 190,
-
+        image: "/assets/vehicle1.jpg",
+        imageAlt: "Car Image",
+        name: "Toyota Corolla 2018",
+        price: 650000,
+        type: "Vehicle",
     },
     {
         starts: "Starts Later",
-        image: "/assets/product4.png",
-        imageAlt: "PC Monitor Image",
-        name: "IPS LCD Gaming Monitor",
-        price: 120,
-
+        image: "/assets/electronics2.jpg",
+        imageAlt: "Laptop Image",
+        name: "Gaming Laptop",
+        price: 30000,
+        type: "Electronics",
+    },
+    {
+        starts: "Starts Later",
+        image: "/assets/fashion2.webp",
+        imageAlt: "Wristwatch Image",
+        name: "Luxury Wristwatch",
+        price: 5000,
+        type: "Fashion",
     },
     {
         starts: "Live",
-        image: "/assets/product2.png",
-        imageAlt: "Phones Image",
-        name: "HAVIT HV-G92 Gamepad",
-        price: 120,
-
+        image: "/assets/house2.jpg",
+        imageAlt: "Villa Image",
+        name: "Beachside Villa",
+        price: 5000000,
+        type: "House",
     },
-  ]
+    {
+        starts: "Starts Later",
+        image: "/assets/vehicle2.jpg",
+        imageAlt: "Ford Image",
+        name: "Ford",
+        price: 350000,
+        type: "Vehicle",
+    }
+];
