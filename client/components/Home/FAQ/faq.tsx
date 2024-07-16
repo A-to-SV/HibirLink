@@ -14,14 +14,14 @@ const FAQ = () => {
 
     const handleAccordionClick = (value:any) => {
         if (expandedItem === value) {
-            setExpandedItem(null); // Collapse if clicking again
+            setExpandedItem(null); 
         } else {
             setExpandedItem(value);
         }
     };
 
     return (
-        <div className="flex flex-wrap gap-20 justify-between mt-20 mb-20 p-5 sm:pl-40 sm:pr-40">
+        <div id='faq' className="flex flex-wrap gap-20 justify-between mt-20 mb-20 p-5 sm:pl-40 sm:pr-40">
             <div className='faq-container flex justify-center w-full md:w-auto'>
                 <div style={{ position: 'relative' }} className="bg-primary h-70 w-60 text-white p-5 rounded-lg shadow-md flex-3">
                     <Image style={{ position: 'absolute', top: '-20px', right: '-50px', width: '400px' }} src="/assets/faq2.png" alt="FAQ Image" width={400} height={300} />

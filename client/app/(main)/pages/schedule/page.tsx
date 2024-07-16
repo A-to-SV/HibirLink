@@ -1,11 +1,11 @@
 import React from 'react'
 
-const NotFound = () => {
+const page = () => {
   return (
     <div>
-      404
+      schedule here
     </div>
   )
 }
 
-export default NotFound
+export default page
