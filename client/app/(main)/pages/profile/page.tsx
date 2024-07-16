@@ -1,6 +1,8 @@
 // pages/profile.js
 'use client';
+import Link from 'next/link';
 import {useState } from 'react';
+
 
 const ProfilePage = () => {
   const [formData, setFormData] = useState({
@@ -10,6 +12,7 @@ const ProfilePage = () => {
     country: '',
     telno: '',
     role: '',
+    email: ''
   });
 
   const handleChange = (e) => {
@@ -42,16 +45,34 @@ const ProfilePage = () => {
 
   return (
     <div >
-      <div className='bg-gradient-to-r from-light-blue-500 to-white mt-20 h-16'></div>
-      <div>
-        <div>
-          <img src="" alt="" />
-        </div>
-      </div>
       <form onSubmit={handleSubmit} className=" p-4  flex items-center justify-center">
-        <div className="container mx-auto bg-white rounded border-2 p-20 ml-10 mr-10">
+        <div className="container mx-auto bg-white rounded border-2 px-20 pt-10 mt-8 ml-10 mr-10">
+          <div className=" flex bg-gradient-to-r from-green-500 h-16 rounded">
+            <Link href="/" className='flex items-center' >
+              <button className="border-3 rounded bg-white text-black mx-5  px-4 py-2">
+                Back to Home
+              </button>
+            </Link>
+          </div>
+
+          <div className='flex flex-row justify-between items-center'>
+            <div className='flex items-center'>
+              <img className='w-14 ml-5' src="https://st3.depositphotos.com/15648834/17930/v/450/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg" alt="" />
+              <div className='ml-2'>
+                <h2 className='font-semibold text-base'>User Name</h2>
+                <p className='text-gray-500 text-sm'> dummy@gmail.com</p>
+              </div>
+            </div>
+            <div>
+              <button type="submit" className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded w-20 ">
+                    Save
+              </button>
+            </div>
+          </div>
           <div className="flex flex-col md:flex-row lg:flex-row  justify-center">
-            <div className="md:w-1/2 lg:w-1/2 flex flex-col space-y-4 m-5">
+
+            {/*------------------------ left side container ---------------------------*/}
+            <div className="md:w-1/2 lg:w-1/2 flex flex-col space-y-2 m-5">
               <label htmlFor="fullname">Full Name</label>
               <input
                 type="text"
@@ -62,44 +83,43 @@ const ProfilePage = () => {
                 className="input-field border-2 rounded h-10"
               />
               <label htmlFor="gender">Gender</label>
-              <input
-                type="text"
+              <select
                 name="gender"
-                placeholder="Gender"
                 value={formData.gender}
                 onChange={handleChange}
-                className="input-field border-2 rounded h-10"
-              />
+                className="input-field border-2 rounded h-10 text-gray-500"
+              >
+                <option value="">Select Gender</option>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+              </select>
               <label htmlFor="language">Language</label>
-              <input
-                type="text"
+              <select
                 name="language"
-                placeholder="Language"
                 value={formData.language}
                 onChange={handleChange}
-                className="input-field border-2 rounded h-10"
-              />
+                className="input-field border-2 rounded h-10 text-gray-500"
+              >
+                <option value="">Select Language</option>
+                <option value="amharic">Amharic</option>
+                <option value="english">English</option>
+              </select>
               <div className='flex flex-col'>
-                <p>My Email Address</p>
-                <div>
-                  <input type="radio" name="email" />
-                  <span className='m-3'>yonatan.tizazu@a2sv.org</span>
-                </div>
-                <div>
-                  <input type="radio" name="email" />
-                  <span className='m-3'>melakeselam.yitbarek@a2sv.org</span>
-                </div>
-                
+                <label htmlFor="email">Add Email Address</label>
                 <input 
                   type="email" 
-                  name="new-email"
+                  name="email"
                   placeholder="New Email"
-                  className='border-2 rounded h-10 mt-4'
+                  value={formData.email}
+                  onChange={handleChange}
+                  className='border-2 rounded h-10 mt-2'
                   />
-                <button className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded w-28 m-5 ml-0'>Add Email</button>
               </div>
             </div>
-            <div className="md:w-1/2 lg:w-1/2 flex flex-col space-y-4 m-5">
+
+            {/*------------------------ right side container ---------------------------*/}
+
+            <div className="md:w-1/2 lg:w-1/2 flex flex-col space-y-2 m-5">
               {/* <div> */}
                 <label htmlFor="country">Country</label>
                 <select
@@ -154,11 +174,6 @@ const ProfilePage = () => {
                   </label>
                 </div>
 
-                
-              {/* </div> */}
-              {/* <button type="submit" className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded w-28">
-                Submit
-              </button> */}
             </div>
           </div>
         </div>
