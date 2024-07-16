@@ -51,7 +51,7 @@ const Carousel = () => {
     };
 
     return (
-        <div className="relative md:w-[70%] mx-auto mt-20 md:mt-40">
+        <div className="relative md:w-[70%] mx-auto mt-10 md:mt-20">
             <Slider {...settings}>
                 {auctionItems.map((item) => (
                     <AuctionCard
