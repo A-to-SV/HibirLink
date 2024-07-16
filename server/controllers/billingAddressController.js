@@ -1,4 +1,6 @@
 import BillingAddress from '../models/BillingAddress.js';
+import {getCartSummaryByUserId, getByUserId} from "../models/CartItem.js";
+
 
 const createBillingAddress = async (req, res) => {
     try {
@@ -39,4 +41,15 @@ const deleteBillingAddress = async (req, res) => {
     }
 };
 
-export { createBillingAddress, getBillingAddress, updateBillingAddress, deleteBillingAddress };
+const fetchCartSummary = async (req, res) => {
+    try {
+        const userId = req.user.id; 
+        const cartSummary = await getCartSummaryByUserId(userId);
+        const cartItems = await getByUserId(userId);
+        res.status(200).json([cartItems, cartSummary]);
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+};
+
+export { createBillingAddress, getBillingAddress, updateBillingAddress, deleteBillingAddress, fetchCartSummary};
