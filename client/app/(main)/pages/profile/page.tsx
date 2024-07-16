@@ -163,12 +163,12 @@ const ProfilePage = () => {
                 <input
                   type="radio"
                   name="role"
-                  value="admin"
+                  value="delivery"
                   onChange={handleChange}
-                  checked={formData.role === 'admin'}
+                  checked={formData.role === 'delivery'}
                   className="form-radio"
                 />
-                <span className="ml-2">Admin</span>
+                <span className="ml-2">Delivery provider</span>
               </div>
             </div>
           </div>
