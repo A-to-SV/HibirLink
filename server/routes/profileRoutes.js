@@ -5,8 +5,8 @@ import { protect } from '../middleware/authMiddleware.js';
 const router = Router();
 
 router.route('/')
-    .post(create)
-    .get(getProfile)
-    .patch(updateProfile);
+    .post(protect, create)
+    .get(protect, getProfile)
+    .patch(protect, updateProfile);
 
 export default router;

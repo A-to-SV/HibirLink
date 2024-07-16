@@ -2,8 +2,7 @@ import { createProfile, getProfileByUserId, updateProfileById } from '../models/
 
 const create = async (req, res) => {
     try {
-        const { userId } = req.body; 
-        const profile = await createProfile({ user_id: userId, ...req.body });
+        const profile = await createProfile({ user_id: req.user.id, ...req.body });
         res.status(201).json(profile);
     } catch (error) {
         res.status(500).json({ message: error.message });
@@ -12,8 +11,8 @@ const create = async (req, res) => {
 
 const getProfile = async (req, res) => {
     try {
-        const {userId } = req.body;
-        const profile = await getProfileByUserId(userId); 
+        const profile = await getProfileByUserId(req.user.id); 
+        console.log(`in profile controller`, req.user.id);
         if (!profile) {
             return res.status(404).json({ message: "Profile not found" });
         }
@@ -25,8 +24,7 @@ const getProfile = async (req, res) => {
 
 const updateProfile = async (req, res) => {
     try {
-        const {userId } = req.body;
-        const profile = await updateProfileById({user_id: userId, ...req.body}); 
+        const profile = await updateProfileById({user_id: req.user.id, profileData : req.body}); 
         if (!profile) {
             return res.status(404).json({ message: "Profile not found" });
         }
