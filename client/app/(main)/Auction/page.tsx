@@ -9,6 +9,7 @@ import BusinessBanner from '@/components/Auction/wantToListYourAuction';
 import AuctionBottomSection from '@/components/Auction/auctionBottomSection';
 import Footer from '@/components/MarketPlace/footer'
 
+
 const page = () => {
   return (
     <div className=''>
