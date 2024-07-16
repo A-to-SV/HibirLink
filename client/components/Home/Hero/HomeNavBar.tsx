@@ -1,5 +1,6 @@
 'use client';
 import { useState, useEffect } from 'react';
+import { usePathname } from 'next/navigation';
 import Image from 'next/image';
 import Link from 'next/link';
 import { IoCartOutline } from "react-icons/io5";
@@ -11,7 +12,8 @@ import Dropdown from './DropDown';
 const HomeNavBar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrollActive, setScrollActive] = useState(false);
-
+  const pathname  = usePathname();
+  
   useEffect(() => {
     window.addEventListener("scroll", () => {
       setScrollActive(window.scrollY > 20);
@@ -22,6 +24,8 @@ const HomeNavBar = () => {
     setIsOpen(!isOpen);
   }
 
+  const isHomePage = pathname === '/home';
+
   return (
     <div className={`fixed flex justify-between items-center w-full bg-white mt-9 py-4 md:px-20 px-5 z-30 ${scrollActive ? "shadow-sm" : ""}`}>
       <Link href='/home' className="flex gap-x-1 items-center">
@@ -29,16 +33,20 @@ const HomeNavBar = () => {
         <h1 className='font-bold underline'>HibirLink</h1>
       </Link>
       <div className="hidden md:flex justify-center items-center gap-x-4">
-        <Link href='#'>Home</Link>
-        <Dropdown />
-        <Link href='#about'>About</Link>
-        <Link href='#faq'>FAQ</Link>
+        {!isHomePage || <Dropdown />}
+        {isHomePage && (
+          <>
+            <Link href='#'>Home</Link>
+            <Link href='#about'>About</Link>
+            <Link href='#faq'>FAQ</Link>
+          </>
+        )}
       </div>
       <div className="flex gap-x-6 items-center">
         <Link href=''>
           <IoIosHeartEmpty size={20} className='hover:text-primary' />
         </Link>
-        <Link href=''>
+        <Link href='/pages/cart'>
           <IoCartOutline size={20} className='hover:text-primary' />
         </Link>
         <button className='px-4 py-2 bg-primary text-white rounded-2xl text-xm hover:bg-blue-500 hidden md:block'>GetStarted</button>
@@ -52,11 +60,14 @@ const HomeNavBar = () => {
             <button className="self-end mb-6" onClick={toggleMenu}>
               <IoMdClose size={30} />
             </button>
-            <Link href='#' className='mb-4' onClick={toggleMenu}>Home</Link>
-        
-            <Link href='#about' className='mb-4' onClick={toggleMenu}>About</Link>
-            <Link href='#faq' className='mb-4' onClick={toggleMenu}>FAQ</Link>
-            <Dropdown />
+            {isHomePage || <Dropdown />}
+            {!isHomePage && (
+              <>
+                <Link href='#' className='mb-4' onClick={toggleMenu}>Home</Link>
+                <Link href='#about' className='mb-4' onClick={toggleMenu}>About</Link>
+                <Link href='#faq' className='mb-4' onClick={toggleMenu}>FAQ</Link>
+              </>
+            )}
             <button className='px-4 py-2 mt-4 bg-primary text-white rounded-lg text-xm hover:bg-blue-500 mb-4'>GetStarted</button>
           </div>
         </div>
