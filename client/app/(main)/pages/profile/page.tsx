@@ -46,7 +46,7 @@ const ProfilePage = () => {
     <div className="p-4 flex items-center justify-center min-h-screen bg-gray-100">
       <form onSubmit={handleSubmit} className="bg-white p-6 rounded-lg shadow-md w-full max-w-4xl">
         <div className="flex justify-center md:justify-between lg:justify-between items-center bg-gradient-to-r from-green-500 h-16 rounded mb-6">
-          <Link  href="/">
+          <Link  href="/home">
             <button className="border-3 rounded bg-white text-black mx-5 px-4 py-2">
               Back to Home
             </button>
@@ -122,7 +122,6 @@ const ProfilePage = () => {
               className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
             >
               <option value="">Select Country</option>
-              {/* Add options here */}
             </select>
 
             <label htmlFor="telno" className="block text-sm font-medium text-gray-700 mt-4">Tel No</label>
