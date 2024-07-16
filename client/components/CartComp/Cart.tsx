@@ -4,24 +4,31 @@ import React, { useState } from 'react';
 import Image from 'next/image';
 import monitor from '@/public/assets/monitor.svg';
 import joystick from '@/public/assets/joystick.png';
+import { useRouter } from 'next/navigation';
+import { IoArrowBackCircle } from "react-icons/io5";
+
 
 const Cart = () => {
+    const router = useRouter();
     const [items, setItems] = useState([
         { id: 1, name: 'LCD Monitor', price: 650, quantity: 1, image: monitor },
         { id: 2, name: 'HI Gamepad', price: 550, quantity: 2, image: joystick }
     ]);
 
-    const handleQuantityChange = (id, quantity) => {
+    const handleQuantityChange = (id: number, quantity: string) => {
         setItems(items.map(item => 
             item.id === id ? { ...item, quantity: parseInt(quantity) } : item
         ));
     };
 
-    const calculateSubtotal = (price, quantity) => price * quantity;
+    const calculateSubtotal = (price: number, quantity: number) => price * quantity;
     const calculateTotal = () => items.reduce((total, item) => total + calculateSubtotal(item.price, item.quantity), 0);
 
     return (
         <div className="container mx-auto p-4">
+        <div className='w-[80%] mx-auto py-6'>
+            <IoArrowBackCircle size={30} className='text-blue-700 cursor-pointer' onClick={() => router.push("/marketplace")} />
+        </div>
             <div className="text-lg font-bold hidden md:flex justify-between items-center px-4 py-2 shadow-lg w-[80%] mx-auto">
                 <h2>Product</h2>
                 <h2>Price</h2>
@@ -55,7 +62,7 @@ const Cart = () => {
                 ))}
             </div>
             <div className="flex flex-col md:flex-row justify-between items-center mt-8 space-y-4 md:space-y-0 w-full md:w-[80%] mx-auto">
-                <button className="border p-3 bg-blue-600 text-center text-white hover:bg-blue-700 rounded-lg">Return to Shop</button>
+                <button className="border p-3 bg-blue-600 text-center text-white hover:bg-blue-700 rounded-lg" onClick={() => router.push("/marketplace")}>Return to Shop</button>
                 <button className="border p-3 bg-blue-600 text-center text-white hover:bg-blue-700 rounded-lg">Update Cart</button>
             </div>
             <div className="flex flex-col items-start gap-y-3 mt-8 w-full md:w-[80%] mx-auto">
@@ -78,7 +85,7 @@ const Cart = () => {
                     <span>Total: </span>
                     <span>{calculateTotal()} ETB</span>
                 </div>
-                <button className="w-full p-2 rounded-lg text-white mt-4 bg-blue-700 hover:bg-blue-800 text-center">Proceed to Checkout</button>
+                <button className="w-full p-2 rounded-lg text-white mt-4 bg-blue-700 hover:bg-blue-800 text-center" onClick={() => router.push("/pages/checkout")}>Proceed to Checkout</button>
             </div>
         </div>
     );

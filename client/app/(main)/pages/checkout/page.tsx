@@ -1,13 +1,24 @@
+'use client';
 import React from 'react';
 import monitor from '@/public/assets/monitor.svg';
 import joystick from '@/public/assets/joystick.png';
 import Image from 'next/image';
 import chapa from '@/public/assets/chapa.svg';
 import telebirr from '@/public/assets/telebirr.svg';
+import Footer from '@/components/MarketPlace/footer';
+import { IoArrowBackCircle } from "react-icons/io5";
+import { useRouter } from 'next/navigation';
+
+
 
 const Checkout = () => {
+    const router = useRouter();
     return (
-        <div className="container p-4 md:w-[80%] mx-auto shadow-lg md:py-16">
+        <div className=''>
+            <div className='w-[80%] mx-auto py-10'>
+                <IoArrowBackCircle size={30} className='text-blue-700 cursor-pointer' onClick={() => router.push("/pages/cart")} />
+            </div>
+            <div className="container p-4 md:w-[80%] mx-auto shadow-lg md:py-20">
             <div className="flex flex-col md:flex-row justify-between gap-x-10">
                 <div className="w-full md:w-1/2 p-4">
                     <h2 className="text-2xl font-bold mb-4">Billing Details</h2>
@@ -106,6 +117,8 @@ const Checkout = () => {
                     <button className="bg-primary hover:bg-blue-800 outline-none text-white py-2 rounded-md mt-4 w-full">Place Order</button>
                 </div>
             </div>
+        </div>
+        <Footer/>
         </div>
     );
 };
