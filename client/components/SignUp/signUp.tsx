@@ -1,15 +1,42 @@
 "use client";
+
 import { FormControl, IconButton, InputAdornment, InputLabel, OutlinedInput } from '@mui/material';
 import TextField from '@mui/material/TextField';
 import { useState } from 'react';
-import { MdVisibility } from "react-icons/md";
-import { MdVisibilityOff } from "react-icons/md";
+import { MdVisibility, MdVisibilityOff } from "react-icons/md";
 import Image from 'next/image';
+import { useRouter } from 'next/navigation';
+import { useUserRegistrationMutation } from '@/redux/api/endpoints';
 
 const SignUp = () => {
-    const [showPassword, setShowPassword] = useState<boolean>(false);
+    const [name, setName] = useState('');
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [showPassword, setShowPassword] = useState(false);
+    const [errorMessage, setErrorMessage] = useState('');
+    const [successMessage, setSuccessMessage] = useState('');
+    const router = useRouter();
+
+    const [userRegistration, { isLoading }] = useUserRegistrationMutation();
 
     const handleClickShowPassword = () => setShowPassword((show) => !show);
+
+    const handleSubmit = async (e: { preventDefault: () => void; }) => {
+        e.preventDefault();
+        setErrorMessage('');
+        setSuccessMessage('');
+        try {
+            const result = await userRegistration({ name, email, password }).unwrap();
+            if (result) {
+                setSuccessMessage('Registration successful! Redirecting to login...');
+                setTimeout(() => {
+                    router.push('/auth/login');
+                }, 2000); 
+            }
+        } catch (error) {
+            setErrorMessage((error as any).data.message || 'Registration failed. Please try again.');
+        }
+    };
 
     return (
         <div className="min-h-screen bg-cover flex flex-col md:flex-col lg:flex-row p-8 lg:p-12 lg:items-start justify-evenly items-center bg-[url('/assets/sign_in_page.png')]">
@@ -44,14 +71,36 @@ const SignUp = () => {
                     <p className="mb-2 text-sm">Let&apos;s get you started</p>
                     <h3 className="text-lg font-bold text-gray-600 mb-4">Create an account</h3>
                 </div>
-                <form className=''>
-                    <TextField type='text' placeholder='John Doe' className='w-full mb-4' id="name" label="Name" variant="outlined" />
-                    <TextField type='email' placeholder='johnsondoe@nomail.com' className='w-full mb-4' id="email" label="Email" variant="outlined" />
-                    <FormControl className='w-full mb-10' sx={{ width: '25ch' }} variant="outlined">
+                <form onSubmit={handleSubmit}>
+                    <TextField
+                        type='text'
+                        placeholder='John Doe'
+                        className='w-full mb-4'
+                        id="name"
+                        label="Name"
+                        required
+                        variant="outlined"
+                        value={name}
+                        onChange={(e) => setName(e.target.value)}
+                    />
+                    <TextField
+                        type='email'
+                        required
+                        placeholder='johnsondoe@nomail.com'
+                        className='w-full mb-4'
+                        id="email"
+                        label="Email"
+                        variant="outlined"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                    />
+                    <FormControl className='w-full mb-10' variant="outlined">
                         <InputLabel htmlFor="outlined-adornment-password">Password</InputLabel>
                         <OutlinedInput
                             id="outlined-adornment-password"
                             type={showPassword ? 'text' : 'password'}
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
                             endAdornment={
                                 <InputAdornment position="end">
                                     <IconButton
@@ -64,14 +113,19 @@ const SignUp = () => {
                                 </InputAdornment>
                             }
                             label="Password"
+                            required
                         />
                     </FormControl>
+                    {errorMessage && <div className="text-red-600 text-center mb-4">{errorMessage}</div>}
+                    
+                    {successMessage && <div className="text-green-600 text-center mb-4">{successMessage}</div>}
                     <div className="mb-4">
                         <button
                             type="submit"
                             className="w-full p-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition duration-200"
+                            disabled={isLoading}
                         >
-                            GET STARTED
+                            {isLoading ? 'Registering...' : 'GET STARTED'}
                         </button>
                     </div>
                     <div className='flex justify-center items-center mt-8 mb-4'>
@@ -108,7 +162,7 @@ const SignUp = () => {
                     </div>
                 </form>
                 <div className="text-center mt-4">
-                    <a href="#" className="text-blue-500 hover:underline">No account? Sign Up Here</a>
+                    <a href="/auth/login" className="text-blue-500 hover:underline">Already have an account? Sign In Here</a>
                 </div>
             </div>
         </div>
