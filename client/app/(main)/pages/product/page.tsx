@@ -2,7 +2,7 @@
 import Link from 'next/link';
 import { useState } from 'react';
 
-const ProfilePage = () => {
+const ProductPage = () => {
   const [formData, setFormData] = useState({
     productName: '',
     price: '',
@@ -140,5 +140,5 @@ const ProfilePage = () => {
   );
 };
 
-export default ProfilePage;
+export default ProductPage;
 
