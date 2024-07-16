@@ -127,7 +127,7 @@ const ProfilePage = () => {
                 <option value="Books">Books</option>
                 <option value="Others">Others</option>
             </select>
-            <div className='flex justify-end'>
+            <div className='flex justify-center md:justify-end lg:justify-end'>
                 <button type="submit" className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded w-20 m-7">
                 Save
                 </button>
