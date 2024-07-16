@@ -4,10 +4,12 @@ import joystick from '@/public/assets/joystick.png';
 import Image from 'next/image';
 import chapa from '@/public/assets/chapa.svg';
 import telebirr from '@/public/assets/telebirr.svg';
+import Footer from '@/components/MarketPlace/footer';
 
 const Checkout = () => {
     return (
-        <div className="container p-4 md:w-[80%] mx-auto shadow-lg md:py-16">
+        <div className=''>
+                    <div className="container p-4 md:w-[80%] mx-auto shadow-lg md:py-16">
             <div className="flex flex-col md:flex-row justify-between gap-x-10">
                 <div className="w-full md:w-1/2 p-4">
                     <h2 className="text-2xl font-bold mb-4">Billing Details</h2>
@@ -106,6 +108,8 @@ const Checkout = () => {
                     <button className="bg-primary hover:bg-blue-800 outline-none text-white py-2 rounded-md mt-4 w-full">Place Order</button>
                 </div>
             </div>
+        </div>
+        <Footer/>
         </div>
     );
 };
