@@ -13,4 +13,20 @@ async function query(text, params) {
   return pool.query(text, params);
 }
 
-export { pool, query };
+const startTransaction = async () => {
+  const client = await pool.connect();
+  await client.query('BEGIN');
+  return client;
+};
+
+const commitTransaction = async (client) => {
+  await client.query('COMMIT');
+  client.release();
+};
+
+const rollbackTransaction = async (client) => {
+  await client.query('ROLLBACK');
+  client.release();
+};
+
+export { pool, query, startTransaction, commitTransaction, rollbackTransaction };

@@ -1,7 +1,7 @@
--- CREATE TYPE gender_type AS ENUM ('male', 'female', 'other');
--- CREATE TYPE category_enum AS ENUM ('electronics', 'health', 'industry', 'fashion', 'grocery', 'maintenance');
--- CREATE TYPE language_type AS ENUM('Amharic', 'English');
--- CREATE TYPE payment_type AS ENUM('Cash', 'Bank');
+CREATE TYPE gender_type AS ENUM ('male', 'female', 'other');
+CREATE TYPE category_enum AS ENUM ('electronics', 'health', 'industry', 'fashion', 'grocery', 'maintenance');
+CREATE TYPE language_type AS ENUM('Amharic', 'English');
+CREATE TYPE payment_type AS ENUM('Cash', 'Bank');
 
 CREATE TABLE Users (
      id SERIAL PRIMARY KEY,
