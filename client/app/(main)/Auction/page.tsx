@@ -5,6 +5,9 @@ import CountdownCard from '@/components/Auction/CountdownCard';
 import Image from 'next/image';
 import antique from '@/public/assets/antique.svg'
 import CommonNavBar from '@/components/CommonNavBar';
+import BusinessBanner from '@/components/Auction/wantToListYourAuction';
+import AuctionBottomSection from '@/components/Auction/auctionBottomSection';
+import Footer from '@/components/MarketPlace/footer'
 
 const page = () => {
   return (
@@ -18,6 +21,9 @@ const page = () => {
         </div>
         <CountdownCard/>
       </div>
+      <BusinessBanner />
+      <AuctionBottomSection />
+      <Footer />
     </div>
   )
 }
