@@ -1,7 +1,8 @@
 'use client';
+import Link from 'next/link';
 import { useState } from 'react';
 
-const ProductPage = () => {
+const ProfilePage = () => {
   const [formData, setFormData] = useState({
     productName: '',
     price: '',
@@ -50,7 +51,7 @@ const ProductPage = () => {
 
   return (
     <div className="p-4 flex items-center justify-center min-h-screen">
-      <form onSubmit={handleSubmit} className="bg-white p-6 shadow-lg rounded-lg w-full max-w-5xl mt-10">
+      <form onSubmit={handleSubmit} className="bg-white p-6 border-2 border-blue-300 rounded-lg shadow-md w-full max-w-5xl mt-10">
         <div className='text-blue-500 text-xl mb-8 border-b-2'>
             Product Information
         </div>
@@ -85,11 +86,11 @@ const ProductPage = () => {
             >
             </textarea>
             <input 
-                type="text" 
-                name="imagelink" 
-                className='border border-black py-2 px-4 rounded mt-4 w-full '
+                type="file" 
+                name="productimage" 
+                className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-4 max-w-80 '
+                accept="image/*"
                 onChange={handleChange}
-                placeholder='Image Link here'
             />
           </div>
 
@@ -112,20 +113,7 @@ const ProductPage = () => {
               onChange={handleChange}
               className="mt-1 bg-zinc-100 block w-full rounded-md shadow-sm py-2 px-3 sm:text-sm h-12"
             />
-            <label htmlFor="category" className="block mb-3 font-medium text-gray-700 mt-4">Category</label>
-            <select
-                name="category"
-                value={formData.category}
-                onChange={handleChange}
-                className="mt-1 bg-zinc-100 block w-full rounded-md shadow-sm py-2 px-3 text-gray-600 h-12 sm:text-sm"
-                 >
-                <option value="">Select Category</option>
-                <option value="Electronics">Electronics</option>
-                <option value="Clothes">Clothes</option>
-                <option value="Furniture">Furniture</option>
-                <option value="Books">Books</option>
-                <option value="Others">Others</option>
-            </select>
+        
             <div className='flex justify-center md:justify-end lg:justify-end'>
                 <button type="submit" className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded w-20 m-7">
                    Save
@@ -139,5 +127,5 @@ const ProductPage = () => {
   );
 };
 
-export default ProductPage;
+export default ProfilePage;
 

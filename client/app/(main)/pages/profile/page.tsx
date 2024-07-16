@@ -1,4 +1,3 @@
-
 'use client';
 import Link from 'next/link';
 import { useState } from 'react';
@@ -14,7 +13,7 @@ const ProfilePage = () => {
     email: ''
   });
 
-  const handleChange = (e) => {
+  const handleChange = (e: { target: { name: any; value: any; }; }) => {
     const { name, value } = e.target;
     setFormData((prevState) => ({
       ...prevState,
@@ -22,7 +21,7 @@ const ProfilePage = () => {
     }));
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: { preventDefault: () => void; }) => {
     e.preventDefault();
     try {
       const response = await fetch('/api/submitProfile', {
@@ -41,6 +40,7 @@ const ProfilePage = () => {
       console.error('Error submitting form:', error);
     }
   };
+
 
   return (
     <div className="p-4 flex items-center justify-center min-h-screen bg-gray-100">
