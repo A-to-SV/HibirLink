@@ -1,6 +1,7 @@
 -- CREATE TYPE gender_type AS ENUM ('male', 'female', 'other');
 -- CREATE TYPE category_enum AS ENUM ('electronics', 'health', 'industry', 'fashion', 'grocery', 'maintenance');
 -- CREATE TYPE language_type AS ENUM('Amharic', 'English');
+-- CREATE TYPE payment_type AS ENUM('Cash', 'Bank');
 
 CREATE TABLE Users (
      id SERIAL PRIMARY KEY,
@@ -44,4 +45,16 @@ CREATE TABLE CartItems (
     quantity INT NOT NULL,
     FOREIGN KEY (user_id) REFERENCES Users(id),
     FOREIGN KEY (product_id) REFERENCES Products(id)
+);
+
+CREATE TABLE BillingAddresses (
+    id SERIAL PRIMARY KEY,
+    user_id INT NOT NULL,
+    recipient_name VARCHAR(255),
+    street_address VARCHAR(255) NOT NULL,
+    apartment_floor VARCHAR(255),
+    town_city VARCHAR(255) NOT NULL,
+    phone_number VARCHAR(20) NOT NULL,
+    payment_method payment_type NOT NULL,
+    FOREIGN KEY (user_id) REFERENCES Users(id)
 );

@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import { createCartItem, getCartItemsByUserId, updateCartItem, deleteCart } from '../controllers/cartController.js';
+import { createCartItem, getCartItemsByUserId, updateCartItem, deleteCart, getCartSummary} from '../controllers/cartController.js';
 
 const router = Router();
 
@@ -10,5 +10,7 @@ router.get('/cart/:userId', getCartItemsByUserId);
 router.patch('/cart/:id', updateCartItem);
 
 router.delete('/cart/:id', deleteCart);
+
+router.get('/cart/summary/:userId', getCartSummary);
 
 export default router;

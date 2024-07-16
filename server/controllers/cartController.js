@@ -1,4 +1,4 @@
-import { create, getByUserId, updateQuantity, deleteCartItem} from "../models/CartItem.js";
+import { create, getByUserId, updateQuantity, deleteCartItem, getCartSummaryByUserId} from "../models/CartItem.js";
 
 const createCartItem = async (req, res) => {
     const { userId, productId, quantity } = req.body;
@@ -36,6 +36,32 @@ const getCartItemsByUserId = async (req, res) => {
     }
 };
 
+const getCartSummary = async (req, res) => {
+    const userId = req.params.userId;
+
+    try {
+        const cartItems = await getCartSummaryByUserId(userId);
+
+        if (!cartItems.length) {
+            return res.status(404).json({ message: "No cart items found" });
+        }
+
+        let subtotal = 0;
+
+        cartItems.forEach(item => {
+            subtotal += item.product_price * item.quantity;
+        });
+
+        const shippingFee = subtotal < 200 ? 0 : 10; // Free shipping for orders less than $200
+        const total = subtotal + shippingFee;
+
+        res.status(200).json({ cartItems, subtotal, shippingFee, total });
+    } catch (error) {
+        console.error('Error fetching cart summary:', error);
+        res.status(500).json({ message: 'Internal server error' });
+    }
+};
+
 const updateCartItem = async (req, res) => {
     const cartItemId = req.params.id;
     const { quantity } = req.body;
@@ -61,4 +87,4 @@ const deleteCart= async (req, res) => {
     }
 };
 
-export {createCartItem, getCartItemsByUserId, updateCartItem, deleteCart};
+export {createCartItem, getCartItemsByUserId, updateCartItem, getCartSummary, deleteCart};
