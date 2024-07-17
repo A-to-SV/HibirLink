@@ -8,6 +8,7 @@ import CommonNavBar from '@/components/CommonNavBar';
 import BusinessBanner from '@/components/Auction/wantToListYourAuction';
 import AuctionBottomSection from '@/components/Auction/auctionBottomSection';
 import Footer from '@/components/MarketPlace/footer'
+import ExploreAuctionsSection from '@/components/Auction/exploreAuctionsSection';
 
 
 const page = () => {
@@ -23,6 +24,7 @@ const page = () => {
         <CountdownCard/>
       </div>
       <BusinessBanner />
+      <ExploreAuctionsSection />
       <AuctionBottomSection />
       <Footer />
     </div>
