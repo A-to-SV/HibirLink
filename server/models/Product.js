@@ -1,7 +1,7 @@
 import { query } from '../config/db.js';
 
-const createProduct = async (productData) => {
-    const { user_id, category, name, price, description, image, address, contact_number } = productData;
+const createProduct = async (user_id, productData) => {
+    const {category, name, price, description, image, address, contact_number } = productData;
     const result = await query(
         'INSERT INTO Products (user_id, category, name, price, description, image, address, contact_number) VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING *',
         [user_id, category, name, price, description, image, address, contact_number]
