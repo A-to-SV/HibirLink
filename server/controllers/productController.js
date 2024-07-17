@@ -2,8 +2,7 @@ import { createProduct, getProductById, getProducts, updateProductById, deletePr
 
 const create = async (req, res) => {
     try {
-        const{ userId }= req.body;
-        const product = await createProduct({ user_id: userId, ...req.body });
+        const product = await createProduct({ user_id: req.user.id, ...req.body });
         res.status(201).json(product);
     } catch (error) {
         res.status(500).json({ message: error.message });

@@ -5,9 +5,9 @@ import { protect } from '../middleware/authMiddleware.js';
 const router = Router();
 
 router.post('/', protect, createBillingAddress);
-router.get('/', getBillingAddress);
-router.put('/:id', updateBillingAddress);
-router.delete('/:id', deleteBillingAddress);
-router.get('/summary', fetchCartSummary)
+router.get('/', protect, getBillingAddress);
+router.patch('/:id', protect, updateBillingAddress);
+router.delete('/:id', protect, deleteBillingAddress);
+router.get('/summary', protect, fetchCartSummary)
 
 export default router;

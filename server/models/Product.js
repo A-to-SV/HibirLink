@@ -60,11 +60,27 @@ const updateProductById = async (id, productData) => {
 };
 
 const deleteProductById = async (id) => {
-    const result = await query(
-        'DELETE FROM Products WHERE id = $1 RETURNING *',
-        [id]
-    );
-    return result.rows[0];
+    try {
+        const checkResult = await query('SELECT * FROM Products WHERE id = $1', [id]);
+        if (checkResult.rows.length === 0) {
+            return { success: false, message: 'Product not found' };
+        }
+
+        const deleteResult = await query('DELETE FROM Products WHERE id = $1 RETURNING *', [id]);
+        if (deleteResult.rows.length > 0) {
+            return { success: true, product: deleteResult.rows[0] };
+        } else {
+            return { success: false, message: 'Product could not be deleted' };
+        }
+    } catch (error) {
+        if (error.code === '23503') { 
+            return { success: false, message: 'Product cannot be deleted due to existing references.' };
+        } else {
+            // Handle other unexpected errors
+            console.error('Unexpected error during product deletion:', error);
+            return { success: false, message: 'An unexpected error occurred' };
+        }
+    }
 };
 
 export { createProduct, getProductById, getProducts, updateProductById, deleteProductById, searchProductsByName };
