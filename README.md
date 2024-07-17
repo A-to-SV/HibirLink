@@ -53,3 +53,13 @@ npm start
 ## API endpoints
 
 check ./server/Hibirlink.postman_collection.json for API documentation
+
+## Fixing `bcrypt` Installation Issues
+
+If you encounter issues with the `bcrypt` module, such as errors indicating an "invalid ELF header," it may be due to a mismatch between the architecture of the binary file and your Node.js runtime. To resolve this, you can force the recompilation of the native module to match your current architecture and Node.js version. Follow the steps below:
+
+1. **Reinstall `bcrypt`**: This step forces the recompilation of the `bcrypt` module. Open your terminal and run one of the following commands:
+
+   ```bash
+   npm uninstall bcrypt
+   npm install bcrypt
