@@ -56,7 +56,7 @@ const HomeNavBar = () => {
         </Link>
         {isLoggedIn ? (
           <div className="flex items-center gap-x-4">
-            <Link href='/pages/userprofile'>
+            <Link href='/pages/profile'>
               <Image src={avatarimage} alt="Profile" className="rounded-full w-12 h-12 cursor-pointer" width={40} height={40} />
             </Link>
             <button onClick={handleLogout} className="hidden md:inline-block px-4 py-2 bg-primary text-white rounded-2xl text-xm hover:bg-blue-500">Logout</button>
