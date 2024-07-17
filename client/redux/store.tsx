@@ -1,6 +1,5 @@
 import { configureStore } from '@reduxjs/toolkit';
-import {endpointsApi} from './api/endpoints';
-
+import { endpointsApi } from './api/endpoints';
 
 const store = configureStore({
   reducer: {
