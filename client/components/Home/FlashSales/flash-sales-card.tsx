@@ -16,12 +16,12 @@ interface ProductCardProps {
     return (
     <div className="hover:scale-105 transition-transform duration-300 ease-in-out w-72">
       <div className="rounded overflow-hidden shadow-lg my-2">
-        <div className="flex group bg-gray-200 h-[220px] items-center p-4 relative">
+        <div className="flex group bg-gray-100 h-[220px] items-center p-4 relative">
           <div className="absolute top-0 left-0 bg-blue-500 text-white px-2 py-1 text-xs">
             {percent}
           </div>
           <img
-            className="mx-auto"
+            className="mx-auto overflow-hidden object-cover h-50 w-40"
             src={image}
             alt={imageAlt}
           />

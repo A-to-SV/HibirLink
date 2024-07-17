@@ -158,17 +158,6 @@ const ProfilePage = () => {
                 />
                 <span className="ml-2">Service Provider</span>
               </div>
-              <div>
-                <input
-                  type="radio"
-                  name="role"
-                  value="delivery"
-                  onChange={handleChange}
-                  checked={formData.role === 'delivery'}
-                  className="form-radio"
-                />
-                <span className="ml-2">Delivery provider</span>
-              </div>
             </div>
           </div>
         </div>

@@ -6,7 +6,6 @@ import "./globals.css";
 import NavBar from "@/components/NavBar";
 import { Provider as StoreProvider } from "react-redux";
 import store from "@/redux/store";
-import { endpointsApi } from "@/redux/api/endpoints";
 
 
 const inter = Inter({ subsets: ["latin"] });

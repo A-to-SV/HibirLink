@@ -2,7 +2,6 @@
 import { useState } from 'react';
 import * as React from "react";
 import { Calendar } from "@/components/ui/calendar";
-import 'react-time-picker/dist/TimePicker.css';
 
 const ContactPage = () => {
   const [formData, setFormData] = useState({
@@ -46,7 +45,7 @@ const ContactPage = () => {
 
   return (
     <div className="p-4 flex items-center justify-center min-h-screen">
-      <form onSubmit={handleSubmit} className="bg-white p-6 border-2 border-blue-300 rounded-lg shadow-md w-full max-w-5xl mt-10">
+      <form onSubmit={handleSubmit} className="bg-white p-6 shadow-lg rounded-lg w-full max-w-5xl mt-10">
         <div className="flex flex-col md:flex-row md:space-x-6">
           <div className="flex-1 mb-6 md:mb-0">
             <div className='flex justify-center'>

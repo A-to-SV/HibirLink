@@ -28,7 +28,7 @@ const CommonNavBar = () => {
   };
 
   return (
-    <div className={`flex justify-between items-center w-full bg-white mt-9 py-4 md:px-20 px-5 z-30 ${scrollActive ? "shadow-sm" : ""}`}>
+    <div className={`flex justify-between items-center w-full bg-white mt-9 py-4 md:px-20 px-5 z-100 ${scrollActive ? "shadow-sm" : ""}`}>
       <Link href='/home' className="flex gap-x-1 items-center">
         <Image src={Logo} alt='logoImage' />
         <h1 className='font-bold underline'>HibirLink</h1>

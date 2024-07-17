@@ -6,6 +6,7 @@ export const endpointsApi = createApi({
   baseQuery: fetchBaseQuery({
     baseUrl: "http://localhost:5000",
   }),
+  tagTypes: ["Products"],
   endpoints: (builder) => ({
     userRegistration: builder.mutation({
         query: ({name, email, password}) => ({
@@ -29,10 +30,38 @@ export const endpointsApi = createApi({
             }
         }),
     }),
+
+    postProduct: builder.mutation({
+        query: ({name, price, image, description, contact_number, address, category}) => ({
+            url: '/api/products',
+            method: 'POST',
+            body:{
+                user_id:1,
+                name, 
+                price, 
+                image,
+                description,
+                contact_number,
+                address,
+                category,
+            }
+        }),
+        invalidatesTags: ['Products'],
+    }),
+
+    getAllProducts: builder.query({
+        query: () => ({
+            url: '/api/products',
+            method: 'GET',
+        }),
+        providesTags: ['Products'],
+    }),
   }),
 });
 
 export const {
     useUserRegistrationMutation,
     useUserLoginMutation,
+    usePostProductMutation,
+    useGetAllProductsQuery,
 } = endpointsApi;

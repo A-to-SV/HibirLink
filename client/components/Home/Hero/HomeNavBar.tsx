@@ -43,7 +43,6 @@ const HomeNavBar = () => {
         <h1 className='font-bold underline'>HibirLink</h1>
       </Link>
       <div className="hidden md:flex justify-center items-center gap-x-4">
-        <Link href='#'>Home</Link>
         <Dropdown />
         <Link href='#about'>About</Link>
         <Link href='#faq'>FAQ</Link>
@@ -57,7 +56,7 @@ const HomeNavBar = () => {
         </Link>
         {isLoggedIn ? (
           <div className="flex items-center gap-x-4">
-            <Link href='/pages/userprofile'>
+            <Link href='/pages/profile'>
               <Image src={avatarimage} alt="Profile" className="rounded-full w-12 h-12 cursor-pointer" width={40} height={40} />
             </Link>
             <button onClick={handleLogout} className="hidden md:inline-block px-4 py-2 bg-primary text-white rounded-2xl text-xm hover:bg-blue-500">Logout</button>
@@ -77,7 +76,6 @@ const HomeNavBar = () => {
             <button className="self-end mb-6" onClick={toggleMenu}>
               <IoMdClose size={30} />
             </button>
-            <Link href='#' className='mb-4' onClick={toggleMenu}>Home</Link>
             <Link href='#about' className='mb-4' onClick={toggleMenu}>About</Link>
             <Link href='#faq' className='mb-4' onClick={toggleMenu}>FAQ</Link>
             <Dropdown />
