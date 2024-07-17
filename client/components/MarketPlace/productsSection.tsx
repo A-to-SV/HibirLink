@@ -17,7 +17,7 @@ const productTypes: { type: string; icon: React.ElementType }[] = [
 
 const OurProductsSection: React.FC = () => {
     const [selectedTypes, setSelectedTypes] = useState<string[]>([]);
-    const { data: products, isLoading, isError } = useGetAllProductsQuery();
+    const { data: products, isLoading, isError } = useGetAllProductsQuery({});
 
     const toggleType = (type: string) => {
         setSelectedTypes(prevSelectedTypes =>

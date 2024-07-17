@@ -1,7 +1,7 @@
 import React from 'react';
 import Countdown from 'react-countdown';
 
-const renderer = ({ days, hours, minutes, seconds }) => {
+const renderer = ({ days, hours, minutes, seconds }: { days: number, hours: number, minutes: number, seconds: number }) => {
     return (
         <div className="text-center">
             <div className="text-gray-700 mb-2">Live bid starting in</div>

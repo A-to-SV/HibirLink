@@ -13,7 +13,7 @@ const ProductGrid = () => {
                 className += " col-span-1 sm:col-span-2 md:col-span-3";
             }
           return (
-            <div className={`${className} flex justify-center`}>
+            <div key={index} className={`${className} flex justify-center`}>
               {index === 0 ? (
                 <ReadyToShipProducts />
               ) : index === 2 ? (

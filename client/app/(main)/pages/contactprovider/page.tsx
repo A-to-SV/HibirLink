@@ -15,7 +15,7 @@ const ContactPage = () => {
 
   const [selectedDate, setSelectedDate] = useState(new Date());
 
-  const handleChange = (e) => {
+  const handleChange = (e: { target: { name: any; value: any; }; }) => {
     const { name, value } = e.target;
     setFormData((prevState) => ({
       ...prevState,
@@ -23,7 +23,7 @@ const ContactPage = () => {
     }));
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: { preventDefault: () => void; }) => {
     e.preventDefault();
     try {
       const response = await fetch('/api/submitProfile', {

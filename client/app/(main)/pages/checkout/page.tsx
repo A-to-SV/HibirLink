@@ -27,7 +27,7 @@ const Checkout = () => {
                             <input type="text" className="border p-2 rounded w-full" />
                         </div>
                         <div>
-                            <label className="block text-gray-700">Recipient's Name (if you are sending for another person)</label>
+                            <label className="block text-gray-700">Recipients Name (if you are sending for another person)</label>
                             <input type="text" className="border p-2 rounded w-full" />
                         </div>
                         <div>

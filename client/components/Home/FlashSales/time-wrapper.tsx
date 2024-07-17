@@ -42,7 +42,7 @@ const TimeWrapper = () => {
 
     return (
         <div className="text-2xl font-mono flex flex-col space-x-4 gap-2">
-            {partyTime ? <div className="flex space-x-1 m-4 items-center"><h1 className="text-center">It's time for Flash Sales!</h1></div> : null}
+            {partyTime ? <div className="flex space-x-1 m-4 items-center"><h1 className="text-center">It is time for Flash Sales!</h1></div> : null}
             <div className="flex flex-row m-4">
                 <div className='flex flex-col items-center'>
                     <p className="font-inter font-semibold text-sm text-[#546177] opacity-[0.8]">Days</p>

@@ -6,7 +6,7 @@ const BusinessBanner: React.FC = () => {
         <div className="bg-gradient-to-l from-[#5890F8] to-[#DDE9FF] p-6 rounded-md shadow-md  max-w-screen-lg">
             <h2 className="text-xl font-semibold text-blue-600">Do you offer services?</h2>
             <p className="text-lg text-blue-900 mt-1">
-                We’ve got powerful tools to help you offer your services, 
+                We&apos;ve got powerful tools to help you offer your services, 
                 whether they are technical services such as maintenance, 
                 real-time or virtual services like those of a mechanic, 
                 web developer, decorator, caterer, plumber, broker, and so much more.

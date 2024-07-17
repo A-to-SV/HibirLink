@@ -7,8 +7,8 @@ interface ProductCardProps {
     name: string;
     price: string;
     oldPrice: string;
-    rating: string;
-    vote: string;
+    rating: number | string ;
+    vote: number | string;
   }
 
 

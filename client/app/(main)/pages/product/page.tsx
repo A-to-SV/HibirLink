@@ -18,7 +18,7 @@ const ProductPage = () => {
   const [postProduct, { isLoading, isSuccess, isError }] = usePostProductMutation();
   const [successMessage, setSuccessMessage] = useState('');
 
-  const handleChange = (e) => {
+  const handleChange = (e: { target: { name: any; value: any; }; }) => {
     const { name, value } = e.target;
     setFormData((prevState) => ({
       ...prevState,
@@ -26,7 +26,7 @@ const ProductPage = () => {
     }));
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: { preventDefault: () => void; }) => {
     e.preventDefault();
     try {
       await postProduct(formData).unwrap();
