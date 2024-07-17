@@ -129,9 +129,11 @@ const ProductPage = () => {
             >
               <option value="">Select Category</option>
               <option value="electronics">Electronics</option>
-              <option value="clothes">Clothes</option>
-              <option value="furniture">Furniture</option>
-              <option value="books">Books</option>
+              <option value="health">Health</option>
+              <option value="fashion">Fashion</option>
+              <option value="industry">Industry</option>
+              <option value="grocery">Grocery</option>
+              <option value="maintenance">Maintenance</option>
               <option value="others">Others</option>
             </select>
 

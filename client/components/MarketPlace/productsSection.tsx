@@ -3,14 +3,16 @@ import React, { useState, useEffect } from 'react';
 import ProductCard from '../Home/FlashSales/flash-sales-card';
 import { useGetAllProductsQuery } from '@/redux/api/endpoints';
 import { FaMobileAlt, FaIndustry, FaTshirt, FaShoppingCart,FaBookOpen, FaWrench, FaCouch, FaSpa } from 'react-icons/fa'; 
+import { MdLocalGroceryStore } from "react-icons/md";
+import { GrVmMaintenance } from "react-icons/gr";
 
 const productTypes: { type: string; icon: React.ElementType }[] = [
     { type: "electronics", icon: FaMobileAlt },
-    { type: "Health and Beauty", icon: FaSpa },
-    { type: "Industrial", icon: FaIndustry },
-    { type: "clothes", icon: FaTshirt },
-    { type: "book", icon: FaBookOpen },
-    { type: "furniture", icon: FaCouch },
+    { type: "health", icon: FaSpa },
+    { type: "industry", icon: FaIndustry },
+    { type: "fashion", icon: FaTshirt },
+    { type: "grocery", icon: MdLocalGroceryStore },
+    { type: "maintenance", icon: GrVmMaintenance },
 ];
 
 const OurProductsSection: React.FC = () => {
