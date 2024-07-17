@@ -5,12 +5,12 @@ import { protect } from '../middleware/authMiddleware.js';
 const router = Router();
 
 router.route('/')
-    .post(create);
+    .post(protect, create);
 
 router.route('/:id')
-    .get(getProduct)
-    .patch(updateProduct)
-    .delete(deleteProduct);
+    .get(protect, getProduct)
+    .patch(protect, updateProduct)
+    .delete(protect, deleteProduct);
 
 router.get('/', getFilteredProducts);
 router.get('/search', getProductByName);

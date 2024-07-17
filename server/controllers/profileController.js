@@ -2,7 +2,7 @@ import { createProfile, getProfileByUserId, updateProfileById } from '../models/
 
 const create = async (req, res) => {
     try {
-        const profile = await createProfile({ user_id: req.user.id, ...req.body });
+        const profile = await createProfile({user_id: req.user.id, ...req.body });
         res.status(201).json(profile);
     } catch (error) {
         res.status(500).json({ message: error.message });
