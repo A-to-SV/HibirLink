@@ -7,6 +7,7 @@ import { MdVisibility, MdVisibilityOff } from "react-icons/md";
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import { useUserRegistrationMutation } from '@/redux/api/endpoints';
+import frame from '@/public/assets/Frame.png'
 
 const SignUp = () => {
     const [name, setName] = useState('');
@@ -44,7 +45,7 @@ const SignUp = () => {
                 <div className="w-full py-2 md:py-3 lg:py-4">
                     <h1 className="text-3xl md:text-4xl lg:text-5xl text-[#181435] font-bold flex items-center justify-center md:justify-start lg:justify-start space-x-2">
                         <Image
-                            src="/assets/frame.png"
+                            src={frame}
                             alt="Logo Image"
                             width={56}
                             height={56}
