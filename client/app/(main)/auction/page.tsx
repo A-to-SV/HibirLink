@@ -23,8 +23,8 @@ const page = () => {
         </div>
         <CountdownCard/>
       </div>
-      <BusinessBanner />
       <ExploreAuctionsSection />
+      <BusinessBanner />
       <AuctionBottomSection />
       <Footer />
     </div>
