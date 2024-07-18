@@ -27,19 +27,19 @@ const Footer: React.FC = () => {
           <div className="flex-1">
             <h3 className="text-lg font-semibold">Support</h3>
             <ul className="mt-4 space-y-2">
-              <li>Till Biry bazar, Chokta, Dh 1518, Bangladesh</li>
-              <li>exclusive@gmail.com</li>
-              <li>+88017-88889-9999</li>
+              <li>4 kilo, Abrehot, Dh 1518, Ethiopia</li>
+              <li>Hibirlink@gmail.com</li>
+              <li>+251-962212818</li>
             </ul>
           </div>
           <div className="flex-1">
             <h3 className="text-lg font-semibold">Account</h3>
             <ul className="mt-4 space-y-2">
-              <li><a href="#" className="hover:text-black">My Account</a></li>
-              <li><a href="#" className="hover:text-black">Login / Register</a></li>
-              <li><a href="#" className="hover:text-black">Cart</a></li>
+              <li><a href="/pages/profile" className="hover:text-black">My Account</a></li>
+              <li><a href="/auth/signup" className="hover:text-black">Login / Register</a></li>
+              <li><a href="/pages/cart" className="hover:text-black">Cart</a></li>
               <li><a href="#" className="hover:text-black">Wishlist</a></li>
-              <li><a href="#" className="hover:text-black">Shop</a></li>
+              <li><a href="/marketplace" className="hover:text-black">Shop</a></li>
             </ul>
           </div>
           <div className="flex-1">
@@ -47,7 +47,7 @@ const Footer: React.FC = () => {
             <ul className="mt-4 space-y-2">
               <li><a href="#" className="hover:text-black">Privacy Policy</a></li>
               <li><a href="#" className="hover:text-black">Terms of Use</a></li>
-              <li><a href="#" className="hover:text-black">FAQ</a></li>
+              <li><a href="#faq" className="hover:text-black">FAQ</a></li>
               <li><a href="#" className="hover:text-black">Contact</a></li>
             </ul>
           </div>
