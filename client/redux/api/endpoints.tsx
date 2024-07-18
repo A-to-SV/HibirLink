@@ -42,7 +42,6 @@ export const endpointsApi = createApi({
         url: '/api/products',
         method: 'POST',
         body: {
-          user_id: 1, // Ensure user_id is correct or obtained dynamically
           name,
           price,
           image,
