@@ -36,7 +36,6 @@ export const endpointsApi = createApi({
             url: '/api/products',
             method: 'POST',
             body:{
-                user_id:1,
                 name, 
                 price, 
                 image,
