@@ -61,7 +61,7 @@ const SignIn = () => {
             Connecting You to Everything, Everywhere
           </h2>
           <p className="mt-2 md:mt-3 lg:mt-4 text-sm md:text-md lg:text-md text-gray-700">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+          Connecting you to everything, everywhere, with effortless access, reliable services, and an unparalleled user experience. <br/> Discover more today!
           </p>
         </section>
       </div>
